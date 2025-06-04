@@ -1,0 +1,16 @@
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/eng_soft
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/icudtl.dat
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/assets/bdtrilhaverde.json
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.bin.json
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.json
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/version.json
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES.Z
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.bin
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/NativeAssetsManifest.json
+/home/rauany/eng_soft/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin

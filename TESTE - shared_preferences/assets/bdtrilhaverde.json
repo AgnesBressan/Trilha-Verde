@@ -1,0 +1,454 @@
+{
+    "Árvores Úteis": {
+        "Babosa-Branca": {
+            "especie": "Espécie Babosa-Branca",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Babosa-Branca",
+                    "alternativas": {
+                        "A": "Item A Babosa-Branca",
+                        "B": "Item B Babosa-Branca",
+                        "C": "Item C Babosa-Branca",
+                        "D": "Item D Babosa-Branca",
+                        "E": "Item E Babosa-Branca"
+                    },
+                    "resposta_correta": "Item A Babosa-Branca"
+                }
+            ]
+        },
+        "Eritrina": {
+            "especie": "Espécie Eritrina",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Eritrina",
+                    "alternativas": {
+                        "A": "Item A Eritrina",
+                        "B": "Item B Eritrina",
+                        "C": "Item C Eritrina",
+                        "D": "Item D Eritrina",
+                        "E": "Item E Eritrina"
+                    },
+                    "resposta_correta": "Item A Eritrina"
+                }
+            ]
+        },
+        "Guapuruvu": {
+            "especie": "Espécie Guapuruvu",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Guapuruvu",
+                    "alternativas": {
+                        "A": "Item A Guapuruvu",
+                        "B": "Item B Guapuruvu",
+                        "C": "Item C Guapuruvu",
+                        "D": "Item D Guapuruvu",
+                        "E": "Item E Guapuruvu"
+                    },
+                    "resposta_correta": "Item A Guapuruvu"
+                }
+            ]
+        },
+        "Cambará": {
+            "especie": "Espécie Cambará",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Cambará",
+                    "alternativas": {
+                        "A": "Item A Cambará",
+                        "B": "Item B Cambará",
+                        "C": "Item C Cambará",
+                        "D": "Item D Cambará",
+                        "E": "Item E Cambará"
+                    },
+                    "resposta_correta": "Item A Cambará"
+                }
+            ]
+        },
+        "Paineira": {
+            "especie": "Espécie Paineira",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Paineira",
+                    "alternativas": {
+                        "A": "Item A Paineira",
+                        "B": "Item B Paineira",
+                        "C": "Item C Paineira",
+                        "D": "Item D Paineira",
+                        "E": "Item E Paineira"
+                    },
+                    "resposta_correta": "Item A Paineira"
+                }
+            ]
+        },
+        "Chichá": {
+            "especie": "Espécie Chichá",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Chichá",
+                    "alternativas": {
+                        "A": "Item A Chichá",
+                        "B": "Item B Chichá",
+                        "C": "Item C Chichá",
+                        "D": "Item D Chichá",
+                        "E": "Item E Chichá"
+                    },
+                    "resposta_correta": "Item A Chichá"
+                }
+            ]
+        },
+        "Chuva-de-Ouro": {
+            "especie": "Espécie Chuva-de-Ouro",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Chuva-de-Ouro",
+                    "alternativas": {
+                        "A": "Item A Chuva-de-Ouro",
+                        "B": "Item B Chuva-de-Ouro",
+                        "C": "Item C Chuva-de-Ouro",
+                        "D": "Item D Chuva-de-Ouro",
+                        "E": "Item E Chuva-de-Ouro"
+                    },
+                    "resposta_correta": "Item A Chuva-de-Ouro"
+                }
+            ]
+        },
+        "Sumaúma": {
+            "especie": "Espécie Sumaúma",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Sumaúma",
+                    "alternativas": {
+                        "A": "Item A Sumaúma",
+                        "B": "Item B Sumaúma",
+                        "C": "Item C Sumaúma",
+                        "D": "Item D Sumaúma",
+                        "E": "Item E Sumaúma"
+                    },
+                    "resposta_correta": "Item A Sumaúma"
+                }
+            ]
+        },
+        "Abricó-de-Macaco": {
+            "especie": "Espécie Abricó-de-Macaco",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Abricó-de-Macaco",
+                    "alternativas": {
+                        "A": "Item A Abricó-de-Macaco",
+                        "B": "Item B Abricó-de-Macaco",
+                        "C": "Item C Abricó-de-Macaco",
+                        "D": "Item D Abricó-de-Macaco",
+                        "E": "Item E Abricó-de-Macaco"
+                    },
+                    "resposta_correta": "Item A Abricó-de-Macaco"
+                }
+            ]
+        },
+        "Ipê-Amarelo": {
+            "especie": "Espécie Ipê-Amarelo",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Ipê-Amarelo",
+                    "alternativas": {
+                        "A": "Item A Ipê-Amarelo",
+                        "B": "Item B Ipê-Amarelo",
+                        "C": "Item C Ipê-Amarelo",
+                        "D": "Item D Ipê-Amarelo",
+                        "E": "Item E Ipê-Amarelo"
+                    },
+                    "resposta_correta": "Item A Ipê-Amarelo"
+                }
+            ]
+        },
+        "Pacová-de-Macaco": {
+            "especie": "Espécie Pacová-de-Macaco",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Pacová-de-Macaco",
+                    "alternativas": {
+                        "A": "Item A Pacová-de-Macaco",
+                        "B": "Item B Pacová-de-Macaco",
+                        "C": "Item C Pacová-de-Macaco",
+                        "D": "Item D Pacová-de-Macaco",
+                        "E": "Item E Pacová-de-Macaco"
+                    },
+                    "resposta_correta": "Item A Pacová-de-Macaco"
+                }
+            ]
+        },
+        "Jequitibá-Branco": {
+            "especie": "Espécie Jequitibá-Branco",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Jequitibá-Branco",
+                    "alternativas": {
+                        "A": "Item A Jequitibá-Branco",
+                        "B": "Item B Jequitibá-Branco",
+                        "C": "Item C Jequitibá-Branco",
+                        "D": "Item D Jequitibá-Branco",
+                        "E": "Item E Jequitibá-Branco"
+                    },
+                    "resposta_correta": "Item A Jequitibá-Branco"
+                }
+            ]
+        },
+        "Ipê-Branco": {
+            "especie": "Espécie Ipê-Branco",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Ipê-Branco",
+                    "alternativas": {
+                        "A": "Item A Ipê-Branco",
+                        "B": "Item B Ipê-Branco",
+                        "C": "Item C Ipê-Branco",
+                        "D": "Item D Ipê-Branco",
+                        "E": "Item E Ipê-Branco"
+                    },
+                    "resposta_correta": "Item A Ipê-Branco"
+                }
+            ]
+        },
+        "Jequitibá-Rosa": {
+            "especie": "Espécie Jequitibá-Rosa",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Jequitibá-Rosa",
+                    "alternativas": {
+                        "A": "Item A Jequitibá-Rosa",
+                        "B": "Item B Jequitibá-Rosa",
+                        "C": "Item C Jequitibá-Rosa",
+                        "D": "Item D Jequitibá-Rosa",
+                        "E": "Item E Jequitibá-Rosa"
+                    },
+                    "resposta_correta": "Item A Jequitibá-Rosa"
+                }
+            ]
+        },
+        "Seringueira": {
+            "especie": "Hevea brasiliensis (Kuth) Müll. Arg.",
+            "perguntas": [
+                {
+                    "pergunta": "Sobre a seringueira, escolha a alternativa incorreta",
+                    "alternativas": {
+                        "A": "Suas folhas são compostas por outras três “folhinhas” (trifoliadas).",
+                        "B": "Produz uma madeira branca de baixa durabilidade.",
+                        "C": "Seu nome vem do uso de seringas para tirar o látex e fazer borracha.",
+                        "D": "Também é conhecida por árvore-da-seringa.",
+                        "E": "Os povos indígenas já conheciam e utilizavam essa planta antes da chegada dos colonizadores."
+                    },
+                    "resposta_correta": "Também é conhecida por árvore-da-seringa."
+                }
+            ]
+        },
+        "Jacarandá-Mimoso": {
+            "especie": "Jacaranda mimosifolia D. Don",
+            "perguntas": [
+                {
+                    "pergunta": "Em qual dos estados abaixo o Jacarandá-Mimoso ocorre?",
+                    "alternativas": {
+                        "A": "Amazonas",
+                        "B": "São Paulo",
+                        "C": "Espírito Santo",
+                        "D": "Rio de Janeiro",
+                        "E": "Rio Grande do Sul"
+                    },
+                    "resposta_correta": "São Paulo"
+                }
+            ]
+        },
+        "Pau-Formiga": {
+            "especie": "Espécie Pau-Formiga",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Pau-Formiga",
+                    "alternativas": {
+                        "A": "Item A Pau-Formiga",
+                        "B": "Item B Pau-Formiga",
+                        "C": "Item C Pau-Formiga",
+                        "D": "Item D Pau-Formiga",
+                        "E": "Item E Pau-Formiga"
+                    },
+                    "resposta_correta": "Item A Pau-Formiga"
+                }
+            ]
+        },
+        "Boleira": {
+            "especie": "Espécie Boleira",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Boleira",
+                    "alternativas": {
+                        "A": "Item A Boleira",
+                        "B": "Item B Boleira",
+                        "C": "Item C Boleira",
+                        "D": "Item D Boleira",
+                        "E": "Item E Boleira"
+                    },
+                    "resposta_correta": "Item A Boleira"
+                }
+            ]
+        },
+        "Timboúva": {
+            "especie": "Espécie Timboúva",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Timboúva",
+                    "alternativas": {
+                        "A": "Item A Timboúva",
+                        "B": "Item B Timboúva",
+                        "C": "Item C Timboúva",
+                        "D": "Item D Timboúva",
+                        "E": "Item E Timboúva"
+                    },
+                    "resposta_correta": "Item A Timboúva"
+                }
+            ]
+        },
+        "Escovinha": {
+            "especie": "Espécie Escovinha",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Escovinha",
+                    "alternativas": {
+                        "A": "Item A Escovinha",
+                        "B": "Item B Escovinha",
+                        "C": "Item C Escovinha",
+                        "D": "Item D Escovinha",
+                        "E": "Item E Escovinha"
+                    },
+                    "resposta_correta": "Item A Escovinha"
+                }
+            ]
+        },
+        "Flor-de-Abril": {
+            "especie": "Espécie Flor-de-Abril",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Flor-de-Abril",
+                    "alternativas": {
+                        "A": "Item A Flor-de-Abril",
+                        "B": "Item B Flor-de-Abril",
+                        "C": "Item C Flor-de-Abril",
+                        "D": "Item D Flor-de-Abril",
+                        "E": "Item E Flor-de-Abril"
+                    },
+                    "resposta_correta": "Item A Flor-de-Abril"
+                }
+            ]
+        },
+        "Imbiruçu": {
+            "especie": "Espécie Imbiruçu",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Imbiruçu",
+                    "alternativas": {
+                        "A": "Item A Imbiruçu",
+                        "B": "Item B Imbiruçu",
+                        "C": "Item C Imbiruçu",
+                        "D": "Item D Imbiruçu",
+                        "E": "Item E Imbiruçu"
+                    },
+                    "resposta_correta": "Item A Imbiruçu"
+                }
+            ]
+        }
+    },
+    "Trilha 2": {
+        "Pau-Jacaré": {
+            "especie": "Espécie Pau-Jacaré",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Pau-Jacaré",
+                    "alternativas": {
+                        "A": "Item A Pau-Jacaré",
+                        "B": "Item B Pau-Jacaré",
+                        "C": "Item C Pau-Jacaré",
+                        "D": "Item D Pau-Jacaré",
+                        "E": "Item E Pau-Jacaré"
+                    },
+                    "resposta_correta": "Item A Pau-Jacaré"
+                }
+            ]
+        },
+        "Ceiba": {
+            "especie": "Espécie Ceiba",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Ceiba",
+                    "alternativas": {
+                        "A": "Item A Ceiba",
+                        "B": "Item B Ceiba",
+                        "C": "Item C Ceiba",
+                        "D": "Item D Ceiba",
+                        "E": "Item E Ceiba"
+                    },
+                    "resposta_correta": "Item A Ceiba"
+                }
+            ]
+        },
+        "Ipê-Amarelo": {
+            "especie": "Espécie Ipê-Amarelo",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Ipê-Amarelo",
+                    "alternativas": {
+                        "A": "Item A Ipê-Amarelo",
+                        "B": "Item B Ipê-Amarelo",
+                        "C": "Item C Ipê-Amarelo",
+                        "D": "Item D Ipê-Amarelo",
+                        "E": "Item E Ipê-Amarelo"
+                    },
+                    "resposta_correta": "Item A Ipê-Amarelo"
+                }
+            ]
+        },
+        "Embira-Puitá": {
+            "especie": "Espécie Embira-Puitá",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Embira-Puitá",
+                    "alternativas": {
+                        "A": "Item A Embira-Puitá",
+                        "B": "Item B Embira-Puitá",
+                        "C": "Item C Embira-Puitá",
+                        "D": "Item D Embira-Puitá",
+                        "E": "Item E Embira-Puitá"
+                    },
+                    "resposta_correta": "Item A Embira-Puitá"
+                }
+            ]
+        },
+        "Coração-de-Negro": {
+            "especie": "Espécie Coração-de-Negro",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Coração-de-Negro",
+                    "alternativas": {
+                        "A": "Item A Coração-de-Negro",
+                        "B": "Item B Coração-de-Negro",
+                        "C": "Item C Coração-de-Negro",
+                        "D": "Item D Coração-de-Negro",
+                        "E": "Item E Coração-de-Negro"
+                    },
+                    "resposta_correta": "Item A Coração-de-Negro"
+                }
+            ]
+        },
+        "Açoita-Cavalo": {
+            "especie": "Espécie Açoita-Cavalo",
+            "perguntas": [
+                {
+                    "pergunta": "Pergunta Açoita-Cavalo",
+                    "alternativas": {
+                        "A": "Item A Açoita-Cavalo",
+                        "B": "Item B Açoita-Cavalo",
+                        "C": "Item C Açoita-Cavalo",
+                        "D": "Item D Açoita-Cavalo",
+                        "E": "Item E Açoita-Cavalo"
+                    },
+                    "resposta_correta": "Item A Açoita-Cavalo"
+                }
+            ]
+        }
+    }
+}
