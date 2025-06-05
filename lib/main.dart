@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'screens/tela_principal.dart';
 import 'screens/tela_inicio.dart';
 import 'screens/tela_login.dart';
+import 'screens/tela_menu.dart';
+import 'screens/tela_perfil.dart';
 
 void main() {
   runApp(const TrilhaVerdeApp());
@@ -20,6 +22,8 @@ class TrilhaVerdeApp extends StatelessWidget {
         '/': (context) => const TelaInicial(),
         '/login': (context) => TelaLogin(),
         '/principal': (context) => const TelaPrincipal(),
+        '/menu': (context) => const TelaMenu(),
+        '/perfil': (context) => const TelaPerfil(),
       },
     );
   }

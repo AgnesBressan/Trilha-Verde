@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TelaLogin extends StatelessWidget {
   TelaLogin({super.key});
 
   final TextEditingController nomeController = TextEditingController();
+
+  Future<void> salvarNome(String nome) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('nome_usuario', nome);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,9 +75,10 @@ class TelaLogin extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         final nome = nomeController.text.trim();
                         if (nome.isNotEmpty) {
+                          await salvarNome(nome);
                           Navigator.pushNamed(context, '/principal');
                         }
                       },

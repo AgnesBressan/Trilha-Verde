@@ -16,7 +16,12 @@ class TelaPrincipal extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset('lib/assets/img/logo.png', height: 40),
-            const Icon(Icons.menu, color: Colors.black),
+            IconButton(
+              icon: const Icon(Icons.menu, color: Colors.black),
+              onPressed: () {
+                Navigator.pushNamed(context, '/menu');
+              },
+            ),
           ],
         ),
       ),
