@@ -1,7 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class TelaPrincipal extends StatelessWidget {
+class TelaPrincipal extends StatefulWidget {
   const TelaPrincipal({super.key});
+
+  @override
+  State<TelaPrincipal> createState() => _TelaPrincipalState();
+}
+
+class _TelaPrincipalState extends State<TelaPrincipal> {
+  String nomeUsuario = 'usuário'; // valor padrão
+
+  @override
+  void initState() {
+    super.initState();
+    carregarNomeUsuario();
+  }
+
+  Future<void> carregarNomeUsuario() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      nomeUsuario = prefs.getString('nome_usuario') ?? 'usuário';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +50,8 @@ class TelaPrincipal extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            mainAxisSize: MainAxisSize.min, // 👈 mantém tamanho mínimo
-            mainAxisAlignment: MainAxisAlignment.center, // 👈 centraliza verticalmente
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Linha de boas-vindas com avatar
@@ -38,12 +59,12 @@ class TelaPrincipal extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
-                    'Bem vindo, usuário!',
-                    style: TextStyle(fontSize: 18),
+                  Text(
+                    'Bem vindo, $nomeUsuario!',
+                    style: const TextStyle(fontSize: 18),
                   ),
                   const SizedBox(width: 10),
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundImage: AssetImage('lib/assets/img/icone_avatar.png'),
                     radius: 20,
                   ),
