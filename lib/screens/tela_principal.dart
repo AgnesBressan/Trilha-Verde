@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // --- Start of ExpandableImage component ---
-// You can move this to a separate file (e.g., expandable_image.dart)
-// and import it if you prefer.
-
 class ExpandableImage extends StatelessWidget {
-  final String imagePath;
+  final String thumbnailImagePath; // Renamed for clarity
+  final String? expandedImagePath; // Path for the expanded image
   final double width;
   final double aspectRatio;
   final BoxFit initialFit;
   final BorderRadius borderRadius;
   final List<BoxShadow>? boxShadow;
-  final bool isAsset; // Added to distinguish between asset and file images
+  final bool isThumbnailAsset; // Is the thumbnail an asset
+  final bool isExpandedAsset;  // Is the expanded image an asset
 
   const ExpandableImage({
     super.key,
-    required this.imagePath,
+    required this.thumbnailImagePath,
+    this.expandedImagePath, // If null, thumbnailImagePath will be used for expansion
     this.width = 400,
     this.aspectRatio = 4 / 3,
     this.initialFit = BoxFit.cover,
@@ -29,33 +29,38 @@ class ExpandableImage extends StatelessWidget {
         offset: Offset(0, 4),
       ),
     ],
-    this.isAsset = true, // Default to asset image
+    this.isThumbnailAsset = true,
+    this.isExpandedAsset = true, // Assume expanded is also an asset by default
   });
 
-  ImageProvider _getImageProvider() {
-    if (isAsset) {
-      return AssetImage(imagePath);
+  ImageProvider _getThumbnailImageProvider() {
+    if (isThumbnailAsset) {
+      return AssetImage(thumbnailImagePath);
     } else {
-      return FileImage(File(imagePath));
+      return FileImage(File(thumbnailImagePath));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // Unique tag for the Hero animation.
-    final String heroTag = 'expandable_image_${imagePath.hashCode}'; // Use hashCode for uniqueness
+    // Hero tag should be based on the thumbnail for the animation source
+    final String heroTag = 'expandable_image_thumb_${thumbnailImagePath.hashCode}';
 
     return GestureDetector(
       onTap: () {
+        // Use expandedImagePath if available, otherwise fallback to thumbnailImagePath
+        final String pathToExpand = expandedImagePath ?? thumbnailImagePath;
+        final bool assetToExpand = expandedImagePath != null ? isExpandedAsset : isThumbnailAsset;
+
         Navigator.of(context).push(
           PageRouteBuilder(
             opaque: false,
             barrierDismissible: true,
             pageBuilder: (BuildContext context, _, __) {
               return _ExpandedImageView(
-                imagePath: imagePath,
-                heroTag: heroTag,
-                isAsset: isAsset,
+                imagePath: pathToExpand,
+                heroTag: heroTag, // Connects to the thumbnail
+                isAsset: assetToExpand,
               );
             },
           ),
@@ -70,11 +75,11 @@ class ExpandableImage extends StatelessWidget {
         child: ClipRRect(
           borderRadius: borderRadius,
           child: Hero(
-            tag: heroTag,
+            tag: heroTag, // This tag is for the thumbnail
             child: AspectRatio(
               aspectRatio: aspectRatio,
               child: Image(
-                image: _getImageProvider(),
+                image: _getThumbnailImageProvider(),
                 fit: initialFit,
               ),
             ),
@@ -86,7 +91,7 @@ class ExpandableImage extends StatelessWidget {
 }
 
 class _ExpandedImageView extends StatelessWidget {
-  final String imagePath;
+  final String imagePath; // This will be the path determined by ExpandableImage
   final String heroTag;
   final bool isAsset;
 
@@ -117,7 +122,10 @@ class _ExpandedImageView extends StatelessWidget {
               minScale: 0.5,
               maxScale: 4.0,
               child: Hero(
-                tag: heroTag,
+                tag: heroTag, // This tag matches the thumbnail's Hero tag
+                // The actual image content for the expanded view
+                // is determined by imagePath, not directly by the Hero's child.
+                // The Hero widget mainly handles the transition animation.
                 child: Center(
                   child: Image(
                     image: _getImageProvider(),
@@ -206,7 +214,6 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Boas-vindas com imagem personalizada
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -224,9 +231,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                 ),
               ],
             ),
-
             const SizedBox(height: 24),
-
             const Text(
               'Trilha Verde',
               style: TextStyle(
@@ -235,13 +240,14 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             const SizedBox(height: 24),
 
-            // Mapa com largura limitada - REPLACED WITH ExpandableImage
+            // MODIFIED HERE:
             const ExpandableImage(
-              imagePath: 'lib/assets/img/icone_mapa.png',
-              width: 400, // You can adjust or use the default
+              thumbnailImagePath: 'lib/assets/img/icone_mapa.png',
+              // Provide the path to the image you want to show when expanded
+              expandedImagePath: 'lib/assets/img/map_agnes.png', // <-- CHANGE THIS
+              width: 400,
               aspectRatio: 4 / 3,
               initialFit: BoxFit.cover,
               borderRadius: BorderRadius.all(Radius.circular(16)),
@@ -252,20 +258,17 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                   offset: Offset(0, 4),
                 ),
               ],
-              isAsset: true, // Explicitly state it's an asset
+              isThumbnailAsset: true,
+              isExpandedAsset: true, // Assuming mapa_detalhado.png is also an asset
             ),
 
             const SizedBox(height: 24),
-
             const Text(
               'Leia um QR Code de uma árvore\npara iniciar o jogo!',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16),
             ),
-
             const SizedBox(height: 24),
-
-            // QR Code clicável
             GestureDetector(
               onTap: () {
                 Navigator.pushNamed(context, '/qrcode');
