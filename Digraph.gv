@@ -1,0 +1,11 @@
+// <programa>
+digraph {
+	rankdir=LR
+	start [label="" shape=point]
+	end [label="" shape=point]
+	"<programa>_0_0" [label=<bloco> shape=box]
+	start -> "<programa>_0_0"
+	"<programa>_0_1" [label="." shape=ellipse]
+	"<programa>_0_0" -> "<programa>_0_1"
+	"<programa>_0_1" -> end
+}
