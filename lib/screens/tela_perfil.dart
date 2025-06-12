@@ -51,7 +51,12 @@ class _TelaPerfilState extends State<TelaPerfil> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF90E0D4),
         elevation: 0,
-        title: Image.asset('lib/assets/img/logo.png', height: 40),
+        title: GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, '/principal');
+          },
+          child: Image.asset('lib/assets/img/logo.png', height: 40),
+        ),
         automaticallyImplyLeading: false,
       ),
       body: Center(
