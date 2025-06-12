@@ -115,14 +115,19 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
 
             const SizedBox(height: 24),
 
-            // QR Code proporcional
-            SizedBox(
-              width: 100,
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: Image.asset(
-                  'lib/assets/img/icone_qrcode.png',
-                  fit: BoxFit.contain,
+            // QR Code clicável
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/qrcode');
+              },
+              child: SizedBox(
+                width: larguraTela * 0.25,
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: Image.asset(
+                    'lib/assets/img/icone_qrcode.png',
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
             ),

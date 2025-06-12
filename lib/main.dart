@@ -4,6 +4,7 @@ import 'screens/tela_inicio.dart';
 import 'screens/tela_login.dart';
 import 'screens/tela_menu.dart';
 import 'screens/tela_perfil.dart';
+import 'screens/tela_qrcode.dart';
 
 void main() {
   runApp(const TrilhaVerdeApp());
@@ -24,6 +25,7 @@ class TrilhaVerdeApp extends StatelessWidget {
         '/principal': (context) => const TelaPrincipal(),
         '/menu': (context) => const TelaMenu(),
         '/perfil': (context) => const TelaPerfil(),
+        '/qrcode': (context) => const TelaQRCode(),
       },
     );
   }
