@@ -22,7 +22,7 @@ class TrilhaVerdeApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => const TelaInicial(),
+        '/': (context) => const TelaQuiz(),
         '/login': (context) => TelaLogin(),
         '/principal': (context) => const TelaPrincipal(),
         '/menu': (context) => const TelaMenu(),

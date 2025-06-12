@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TelaQuiz extends StatefulWidget {
   const TelaQuiz({super.key});
@@ -19,12 +20,21 @@ class _TelaQuizState extends State<TelaQuiz> {
     'Letra (d)',
   ];
 
-  void responder(int indice) {
+  Future<void> responder(int indice) async {
     if (respondido) return;
+
     setState(() {
       respostaSelecionada = indice;
       respondido = true;
     });
+
+    if (indice == respostaCorreta) {
+      final prefs = await SharedPreferences.getInstance();
+      final nomeUsuario = prefs.getString('nome_usuario') ?? 'Usuário';
+      final chavePontuacao = 'pontuacao_$nomeUsuario';
+      final pontuacaoAtual = prefs.getInt(chavePontuacao) ?? 0;
+      await prefs.setInt(chavePontuacao, pontuacaoAtual + 1);
+    }
   }
 
   @override
@@ -143,7 +153,7 @@ class _TelaQuizState extends State<TelaQuiz> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      // implementar navegação para pontuações
+                      Navigator.pushNamed(context, '/pontuacao');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.pink[300],

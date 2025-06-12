@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,17 +11,25 @@ class TelaPrincipal extends StatefulWidget {
 
 class _TelaPrincipalState extends State<TelaPrincipal> {
   String nomeUsuario = 'usuário';
+  File? imagemPerfil;
 
   @override
   void initState() {
     super.initState();
-    carregarNomeUsuario();
+    carregarDados();
   }
 
-  Future<void> carregarNomeUsuario() async {
+  Future<void> carregarDados() async {
     final prefs = await SharedPreferences.getInstance();
+
+    final nome = prefs.getString('nome_usuario') ?? 'usuário';
+    final caminhoImagem = prefs.getString('imagem_perfil_$nome');
+
     setState(() {
-      nomeUsuario = prefs.getString('nome_usuario') ?? 'usuário';
+      nomeUsuario = nome;
+      if (caminhoImagem != null && File(caminhoImagem).existsSync()) {
+        imagemPerfil = File(caminhoImagem);
+      }
     });
   }
 
@@ -51,7 +60,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Boas-vindas
+            // Boas-vindas com imagem personalizada
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -60,9 +69,11 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                   style: const TextStyle(fontSize: 18),
                 ),
                 const SizedBox(width: 10),
-                const CircleAvatar(
-                  backgroundImage: AssetImage('lib/assets/img/icone_avatar.png'),
+                CircleAvatar(
                   radius: 20,
+                  backgroundImage: imagemPerfil != null
+                      ? FileImage(imagemPerfil!)
+                      : const AssetImage('lib/assets/img/icone_avatar.png') as ImageProvider,
                 ),
               ],
             ),
@@ -82,7 +93,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
 
             // Mapa com largura limitada
             Container(
-              width: 400, // 🔥 limite máximo de largura
+              width: 400,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [

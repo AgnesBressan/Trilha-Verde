@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class TelaPerfil extends StatefulWidget {
   const TelaPerfil({super.key});
 
@@ -23,9 +22,13 @@ class _TelaPerfilState extends State<TelaPerfil> {
 
   Future<void> carregarDados() async {
     final prefs = await SharedPreferences.getInstance();
+
+    final nome = prefs.getString('nome_usuario') ?? 'Usuário';
+    final chaveImagem = 'imagem_perfil_$nome';
+
     setState(() {
-      nomeUsuario = prefs.getString('nome_usuario') ?? 'Usuário';
-      final imagemPath = prefs.getString('imagem_perfil');
+      nomeUsuario = nome;
+      final imagemPath = prefs.getString(chaveImagem);
       if (imagemPath != null && File(imagemPath).existsSync()) {
         imagemPerfil = File(imagemPath);
       }
@@ -35,9 +38,13 @@ class _TelaPerfilState extends State<TelaPerfil> {
   Future<void> selecionarImagem() async {
     final picker = ImagePicker();
     final imagem = await picker.pickImage(source: ImageSource.gallery);
+
     if (imagem != null) {
       final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('imagem_perfil', imagem.path);
+      final chaveImagem = 'imagem_perfil_$nomeUsuario';
+
+      await prefs.setString(chaveImagem, imagem.path);
+
       setState(() {
         imagemPerfil = File(imagem.path);
       });

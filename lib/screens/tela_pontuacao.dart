@@ -11,19 +11,23 @@ class TelaPontuacao extends StatefulWidget {
 
 class _TelaPontuacaoState extends State<TelaPontuacao> {
   String nomeUsuario = 'Usuário';
-  int arvoresLidas = 14; // Este valor virá do backend futuramente
+  int arvoresLidas = 0; // será carregado do shared_preferences
   final int totalArvores = 20;
 
   @override
   void initState() {
     super.initState();
-    carregarNome();
+    carregarDados();
   }
 
-  Future<void> carregarNome() async {
+  Future<void> carregarDados() async {
     final prefs = await SharedPreferences.getInstance();
+    final nome = prefs.getString('nome_usuario') ?? 'Usuário';
+    final chavePontuacao = 'pontuacao_$nome';
+
     setState(() {
-      nomeUsuario = prefs.getString('nome_usuario') ?? 'Usuário';
+      nomeUsuario = nome;
+      arvoresLidas = prefs.getInt(chavePontuacao) ?? 0;
     });
   }
 
@@ -63,7 +67,10 @@ class _TelaPontuacaoState extends State<TelaPontuacao> {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: const Text('Pontuação', style: TextStyle(color: Colors.black, fontSize: 16)),
+              child: Text(
+                'Pontuação de $nomeUsuario',
+                style: const TextStyle(color: Colors.black, fontSize: 16),
+              ),
             ),
 
             const SizedBox(height: 24),
@@ -98,7 +105,7 @@ class _TelaPontuacaoState extends State<TelaPontuacao> {
               physics: const NeverScrollableScrollPhysics(),
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
-              childAspectRatio: 1.2, // mais "compacto" verticalmente
+              childAspectRatio: 1.2,
               children: [
                 if (arvoresLidas >= 1) _buildTrofeu('Árvore X'),
                 if (arvoresLidas >= 3) _buildTrofeu('Árvore Y'),
