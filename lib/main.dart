@@ -6,6 +6,7 @@ import 'screens/tela_menu.dart';
 import 'screens/tela_perfil.dart';
 import 'screens/tela_qrcode.dart';
 import 'screens/tela_quiz.dart';
+import 'screens/tela_pontuacao.dart';
 
 void main() {
   runApp(const TrilhaVerdeApp());
@@ -28,6 +29,7 @@ class TrilhaVerdeApp extends StatelessWidget {
         '/perfil': (context) => const TelaPerfil(),
         '/quiz': (context) => const TelaQuiz(),
         '/qrcode': (context) => const TelaQRCode(),
+        '/pontuacao': (context) => const TelaPontuacao(),
       },
     );
   }
