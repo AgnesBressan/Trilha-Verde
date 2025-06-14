@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'tela_quiz.dart';
 
 class TelaQRCode extends StatefulWidget {
   const TelaQRCode({super.key});
@@ -11,15 +14,109 @@ class TelaQRCode extends StatefulWidget {
 class _TelaQRCodeState extends State<TelaQRCode> {
   String? qrText;
   bool cameraStarted = true;
+  bool isProcessing = false;
 
-  void _onDetect(BarcodeCapture capture) {
+  @override
+  void initState() {
+    super.initState();
+    _testarLeituraJson();
+  }
+
+  Future<void> _testarLeituraJson() async {
+    try {
+      print('[TESTE] Tentando ler JSON ao entrar na tela...');
+      String jsonString = await rootBundle.loadString('lib/assets/bdtrilhaverde.json');
+      final Map<String, dynamic> dados = jsonDecode(jsonString);
+
+      print('[SUCESSO] JSON carregado. Árvores disponíveis:');
+      for (var chave in dados["Árvores Úteis"].keys) {
+        final nome = dados["Árvores Úteis"][chave]["arvore"];
+        print('- $chave → $nome');
+      }
+    } catch (e) {
+      print('[ERRO] Erro ao carregar JSON no initState: $e');
+    }
+  }
+
+  void _onDetect(BarcodeCapture capture) async {
     final code = capture.barcodes.first.rawValue;
-    if (code != null && qrText == null) {
+    if (code != null && !isProcessing) {
       setState(() {
+        isProcessing = true;
         qrText = code;
         cameraStarted = false;
       });
+
+      final uri = Uri.tryParse(code);
+      final codigoArvore = uri != null && uri.pathSegments.isNotEmpty
+          ? uri.pathSegments.last.replaceAll('.php', '')
+          : code;
+
+      await _processQRCode(codigoArvore);
     }
+  }
+
+  Future<void> _processQRCode(String codigoQr) async {
+    try {
+      print('[DEBUG] Código QR processado: "$codigoQr"');
+      print('[DEBUG] Lendo arquivo JSON...');
+      String jsonString = await rootBundle.loadString('lib/assets/bdtrilhaverde.json');
+      final Map<String, dynamic> dados = jsonDecode(jsonString);
+      print('[DEBUG] JSON carregado com sucesso.');
+
+      final arvores = dados["Árvores Úteis"] as Map<String, dynamic>;
+
+      if (arvores.containsKey(codigoQr)) {
+        final arvoreEncontrada = arvores[codigoQr];
+        final perguntas = arvoreEncontrada["perguntas"];
+        final nomeArvore = arvoreEncontrada["arvore"];
+
+        print('[DEBUG] Árvore encontrada: $nomeArvore');
+        print('[DEBUG] Perguntas: $perguntas');
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TelaQuiz(
+              perguntas: perguntas,
+              nomeArvore: nomeArvore,
+            ),
+          ),
+        );
+      } else {
+        print('[ERRO] Nenhuma árvore corresponde ao QR code: "$codigoQr"');
+        _mostrarErro("QR Code \"$codigoQr\" não reconhecido!");
+      }
+    } catch (e) {
+      print('[ERRO] Falha ao carregar ou processar o JSON: $e');
+      _mostrarErro("Erro ao carregar dados: $e");
+    } finally {
+      setState(() {
+        isProcessing = false;
+      });
+    }
+  }
+
+  void _mostrarErro(String mensagem) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Erro"),
+        content: Text(mensagem),
+        actions: [
+          TextButton(
+            child: const Text("OK"),
+            onPressed: () {
+              Navigator.pop(context);
+              setState(() {
+                cameraStarted = true;
+                qrText = null;
+              });
+            },
+          ),
+        ],
+      ),
+    );
   }
 
   @override

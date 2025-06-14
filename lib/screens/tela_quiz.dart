@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TelaQuiz extends StatefulWidget {
-  const TelaQuiz({super.key});
+  final List<dynamic> perguntas;
+  final String nomeArvore;
+
+  const TelaQuiz({
+    super.key,
+    required this.perguntas,
+    required this.nomeArvore,
+  });
 
   @override
   State<TelaQuiz> createState() => _TelaQuizState();
@@ -10,15 +17,18 @@ class TelaQuiz extends StatefulWidget {
 
 class _TelaQuizState extends State<TelaQuiz> {
   int? respostaSelecionada;
-  final int respostaCorreta = 2;
   bool respondido = false;
+  late Map<String, dynamic> perguntaAtual;
+  late List<String> alternativas;
+  late String respostaCorreta;
 
-  final List<String> alternativas = [
-    'Letra (a)',
-    'Letra (b)',
-    'Letra (c)',
-    'Letra (d)',
-  ];
+  @override
+  void initState() {
+    super.initState();
+    perguntaAtual = widget.perguntas[0];
+    alternativas = perguntaAtual['alternativas'].values.toList().cast<String>();
+    respostaCorreta = perguntaAtual['resposta_correta'];
+  }
 
   Future<void> responder(int indice) async {
     if (respondido) return;
@@ -28,7 +38,7 @@ class _TelaQuizState extends State<TelaQuiz> {
       respondido = true;
     });
 
-    if (indice == respostaCorreta) {
+    if (alternativas[indice] == respostaCorreta) {
       final prefs = await SharedPreferences.getInstance();
       final nomeUsuario = prefs.getString('nome_usuario') ?? 'Usuário';
       final chavePontuacao = 'pontuacao_$nomeUsuario';
@@ -39,7 +49,7 @@ class _TelaQuizState extends State<TelaQuiz> {
 
   @override
   Widget build(BuildContext context) {
-    final bool acertou = respostaSelecionada == respostaCorreta;
+    final bool acertou = respostaSelecionada != null && alternativas[respostaSelecionada!] == respostaCorreta;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -61,7 +71,6 @@ class _TelaQuizState extends State<TelaQuiz> {
         padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            // Pergunta
             Container(
               padding: const EdgeInsets.all(16),
               margin: const EdgeInsets.only(bottom: 16),
@@ -69,10 +78,10 @@ class _TelaQuizState extends State<TelaQuiz> {
                 color: respondido ? Colors.grey[300] : const Color(0xFF90E0D4),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Center(
+              child: Center(
                 child: Text(
-                  'Pergunta 1',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  perguntaAtual['pergunta'],
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -81,7 +90,7 @@ class _TelaQuizState extends State<TelaQuiz> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Text(
-                  'Resposta correta: ${alternativas[respostaCorreta]}',
+                  'Resposta correta: $respostaCorreta',
                   style: const TextStyle(
                     color: Colors.green,
                     fontSize: 16,
@@ -90,7 +99,6 @@ class _TelaQuizState extends State<TelaQuiz> {
                 ),
               ),
 
-            // Alternativas com ícone sobreposto
             Stack(
               alignment: Alignment.center,
               children: [
@@ -104,7 +112,7 @@ class _TelaQuizState extends State<TelaQuiz> {
                           onPressed: () => responder(i),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: respondido
-                                ? (i == respostaCorreta
+                                ? (alternativas[i] == respostaCorreta
                                     ? Colors.green
                                     : (i == respostaSelecionada
                                         ? Colors.red
@@ -135,9 +143,7 @@ class _TelaQuizState extends State<TelaQuiz> {
                       height: 140,
                       width: 140,
                       child: Image.asset(
-                        acertou
-                            ? 'lib/assets/img/certo.png'
-                            : 'lib/assets/img/errado.png',
+                        acertou ? 'lib/assets/img/certo.png' : 'lib/assets/img/errado.png',
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -157,8 +163,7 @@ class _TelaQuizState extends State<TelaQuiz> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.pink[300],
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -171,8 +176,7 @@ class _TelaQuizState extends State<TelaQuiz> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.pink[300],
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
