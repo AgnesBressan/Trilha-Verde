@@ -11,8 +11,8 @@ class TelaPontuacao extends StatefulWidget {
 
 class _TelaPontuacaoState extends State<TelaPontuacao> {
   String nomeUsuario = 'Usuário';
-  int arvoresLidas = 0; // será carregado do shared_preferences
-  final int totalArvores = 20;
+  List<String> arvoresLidas = [];
+  final int totalArvores = 28;
 
   @override
   void initState() {
@@ -23,17 +23,18 @@ class _TelaPontuacaoState extends State<TelaPontuacao> {
   Future<void> carregarDados() async {
     final prefs = await SharedPreferences.getInstance();
     final nome = prefs.getString('nome_usuario') ?? 'Usuário';
-    final chavePontuacao = 'pontuacao_$nome';
+    final chaveArvores = 'arvores_lidas_$nome';
 
     setState(() {
       nomeUsuario = nome;
-      arvoresLidas = prefs.getInt(chavePontuacao) ?? 0;
+      arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    double percentual = arvoresLidas / totalArvores;
+    final int totalLidas = arvoresLidas.length;
+    final double percentual = totalLidas / totalArvores;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -85,7 +86,7 @@ class _TelaPontuacaoState extends State<TelaPontuacao> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '$arvoresLidas/$totalArvores',
+                    '$totalLidas/$totalArvores',
                     style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                   const Text(
@@ -99,21 +100,19 @@ class _TelaPontuacaoState extends State<TelaPontuacao> {
 
             const SizedBox(height: 32),
 
-            GridView.count(
-              crossAxisCount: 2,
+            GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              childAspectRatio: 1.2,
-              children: [
-                if (arvoresLidas >= 1) _buildTrofeu('Árvore X'),
-                if (arvoresLidas >= 3) _buildTrofeu('Árvore Y'),
-                if (arvoresLidas >= 5) _buildTrofeu('Pontuação Y'),
-                if (arvoresLidas >= 7) _buildTrofeu('X Respostas Corretas'),
-                if (arvoresLidas >= 10) _buildTrofeu('Pontuação X'),
-                if (arvoresLidas >= 14) _buildTrofeu('Árvore Z'),
-              ],
+              itemCount: arvoresLidas.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+                childAspectRatio: 1.2,
+              ),
+              itemBuilder: (context, index) {
+                return _buildTrofeu(arvoresLidas[index]);
+              },
             ),
           ],
         ),

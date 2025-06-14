@@ -42,14 +42,24 @@ class _TelaQuizState extends State<TelaQuiz> {
       final prefs = await SharedPreferences.getInstance();
       final nomeUsuario = prefs.getString('nome_usuario') ?? 'Usuário';
       final chavePontuacao = 'pontuacao_$nomeUsuario';
-      final pontuacaoAtual = prefs.getInt(chavePontuacao) ?? 0;
-      await prefs.setInt(chavePontuacao, pontuacaoAtual + 1);
+      final chaveArvores = 'arvores_lidas_$nomeUsuario';
+
+      final arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
+
+      if (!arvoresLidas.contains(widget.nomeArvore)) {
+        arvoresLidas.add(widget.nomeArvore);
+        await prefs.setStringList(chaveArvores, arvoresLidas);
+
+        final pontuacaoAtual = prefs.getInt(chavePontuacao) ?? 0;
+        await prefs.setInt(chavePontuacao, pontuacaoAtual + 1);
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final bool acertou = respostaSelecionada != null && alternativas[respostaSelecionada!] == respostaCorreta;
+    final double largura = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -62,14 +72,19 @@ class _TelaQuizState extends State<TelaQuiz> {
         automaticallyImplyLeading: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () => Navigator.pushNamed(context, '/menu'),
+            icon: const Icon(Icons.emoji_events),
+            onPressed: () => Navigator.pushNamed(context, '/pontuacao'),
+          ),
+          IconButton(
+            icon: const Icon(Icons.map),
+            onPressed: () => Navigator.pushNamed(context, '/principal'),
           ),
         ],
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(24),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
               padding: const EdgeInsets.all(16),
@@ -81,7 +96,11 @@ class _TelaQuizState extends State<TelaQuiz> {
               child: Center(
                 child: Text(
                   perguntaAtual['pergunta'],
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: largura * 0.05,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),
@@ -91,11 +110,12 @@ class _TelaQuizState extends State<TelaQuiz> {
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Text(
                   'Resposta correta: $respostaCorreta',
-                  style: const TextStyle(
-                    color: Colors.green,
-                    fontSize: 16,
+                  style: TextStyle(
+                    color: Colors.green[700],
+                    fontSize: largura * 0.045,
                     fontWeight: FontWeight.bold,
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ),
 
@@ -106,30 +126,27 @@ class _TelaQuizState extends State<TelaQuiz> {
                   children: List.generate(alternativas.length, (i) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () => responder(i),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: respondido
-                                ? (alternativas[i] == respostaCorreta
-                                    ? Colors.green
-                                    : (i == respostaSelecionada
-                                        ? Colors.red
-                                        : Colors.grey[300]))
-                                : Colors.pink[100],
-                            foregroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(vertical: 20),
-                            minimumSize: const Size(200, 60),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            elevation: 4,
+                      child: ElevatedButton(
+                        onPressed: () => responder(i),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: respondido
+                              ? (alternativas[i] == respostaCorreta
+                                  ? Colors.green
+                                  : (i == respostaSelecionada
+                                      ? Colors.red
+                                      : Colors.grey[300]))
+                              : Colors.pink[100],
+                          foregroundColor: Colors.black,
+                          padding: const EdgeInsets.symmetric(vertical: 18),
+                          minimumSize: const Size(double.infinity, 60),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                          child: Text(
-                            alternativas[i],
-                            style: const TextStyle(fontSize: 18),
-                          ),
+                          elevation: 4,
+                        ),
+                        child: Text(
+                          alternativas[i],
+                          style: TextStyle(fontSize: largura * 0.045),
                         ),
                       ),
                     );
@@ -151,40 +168,39 @@ class _TelaQuizState extends State<TelaQuiz> {
               ],
             ),
 
-            const Spacer(),
+            const SizedBox(height: 32),
 
-            if (respondido)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/pontuacao');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pink[300],
-                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton.icon(
+                  onPressed: () => Navigator.pushNamed(context, '/pontuacao'),
+                  icon: const Icon(Icons.emoji_events),
+                  label: const Text('Pontuações'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.pink[300],
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const Text('Pontuações'),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/principal');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pink[300],
-                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                ),
+                ElevatedButton.icon(
+                  onPressed: () => Navigator.pushNamed(context, '/principal'),
+                  icon: const Icon(Icons.map),
+                  label: const Text('Mapa'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.pink[300],
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const Text('Voltar ao Mapa'),
                   ),
-                ],
-              ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 24),
           ],
         ),
       ),
