@@ -12,6 +12,7 @@ class TelaPrincipal extends StatefulWidget {
 class _TelaPrincipalState extends State<TelaPrincipal> {
   String nomeUsuario = 'usuário';
   File? imagemPerfil;
+  String mainImage = 'lib/assets/img/icone_mapa.png'; // Default image
 
   @override
   void initState() {
@@ -24,11 +25,17 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
 
     final nome = prefs.getString('nome_usuario') ?? 'usuário';
     final caminhoImagem = prefs.getString('imagem_perfil_$nome');
+    final chaveArvores = 'arvores_lidas_$nome';
+    final arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
+    final numberOfTreesRead = arvoresLidas.length;
 
     setState(() {
       nomeUsuario = nome;
       if (caminhoImagem != null && File(caminhoImagem).existsSync()) {
         imagemPerfil = File(caminhoImagem);
+      }
+      if (numberOfTreesRead > 0 && numberOfTreesRead <= 28) {
+        mainImage = 'lib/assets/img/planta($numberOfTreesRead).png';
       }
     });
   }
@@ -109,7 +116,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                 child: AspectRatio(
                   aspectRatio: 4 / 3,
                   child: Image.asset(
-                    'lib/assets/img/icone_mapa.png',
+                    mainImage,
                     fit: BoxFit.cover,
                   ),
                 ),
