@@ -137,7 +137,7 @@ class _TelaQuizState extends State<TelaQuiz> {
                                       : Colors.grey[300]))
                               : Colors.pink[100],
                           foregroundColor: Colors.black,
-                          padding: const EdgeInsets.symmetric(vertical: 18),
+                          padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 24),
                           minimumSize: const Size(double.infinity, 60),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
@@ -146,7 +146,7 @@ class _TelaQuizState extends State<TelaQuiz> {
                         ),
                         child: Text(
                           alternativas[i],
-                          style: TextStyle(fontSize: largura * 0.045),
+                          style: TextStyle(fontSize: largura * 0.040),
                         ),
                       ),
                     );
@@ -186,7 +186,7 @@ class _TelaQuizState extends State<TelaQuiz> {
                   ),
                 ),
                 ElevatedButton.icon(
-                  onPressed: () => Navigator.pushNamed(context, '/principal'),
+                  onPressed: () => Navigator.pushNamed(context, '/mapa'),
                   icon: const Icon(Icons.map),
                   label: const Text('Mapa'),
                   style: ElevatedButton.styleFrom(

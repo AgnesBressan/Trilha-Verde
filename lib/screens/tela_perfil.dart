@@ -64,7 +64,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
           },
           child: Image.asset('lib/assets/img/logo.png', height: 40),
         ),
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
       body: Center(
         child: Padding(

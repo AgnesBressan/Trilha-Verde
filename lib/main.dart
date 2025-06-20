@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilha_verde/screens/tela_mapa.dart';
 import 'screens/tela_principal.dart';
 import 'screens/tela_inicio.dart';
 import 'screens/tela_login.dart';
@@ -28,6 +29,7 @@ class TrilhaVerdeApp extends StatelessWidget {
         '/perfil': (context) => const TelaPerfil(),
         '/qrcode': (context) => const TelaQRCode(),
         '/pontuacao': (context) => const TelaPontuacao(),
+        '/mapa': (context) => const TelaMapa(),
       },
 
     );

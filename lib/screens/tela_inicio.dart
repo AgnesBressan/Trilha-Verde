@@ -36,7 +36,7 @@ class TelaInicial extends StatelessWidget {
             // Botão que leva à próxima tela
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/login');
+                Navigator.pushReplacementNamed(context, '/login');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.pink[200],

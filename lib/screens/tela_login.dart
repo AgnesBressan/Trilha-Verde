@@ -79,7 +79,7 @@ class TelaLogin extends StatelessWidget {
                         final nome = nomeController.text.trim();
                         if (nome.isNotEmpty) {
                           await salvarNome(nome);
-                          Navigator.pushNamed(context, '/principal');
+                          Navigator.pushReplacementNamed(context, '/principal');
                         }
                       },
                       style: ElevatedButton.styleFrom(

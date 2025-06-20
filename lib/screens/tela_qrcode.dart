@@ -74,7 +74,7 @@ class _TelaQRCodeState extends State<TelaQRCode> {
         print('[DEBUG] Árvore encontrada: $nomeArvore');
         print('[DEBUG] Perguntas: $perguntas');
 
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => TelaQuiz(
@@ -126,6 +126,7 @@ class _TelaQRCodeState extends State<TelaQRCode> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF90E0D4),
         elevation: 0,
+        toolbarHeight: 100,
         automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -134,7 +135,7 @@ class _TelaQRCodeState extends State<TelaQRCode> {
               onTap: () {
                 Navigator.pushNamed(context, '/principal');
               },
-              child: Image.asset('lib/assets/img/logo.png', height: 40),
+              child: Image.asset('lib/assets/img/logo.png', height: 50),
             ),
             IconButton(
               icon: const Icon(Icons.menu, color: Colors.black),

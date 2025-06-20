@@ -64,7 +64,7 @@ class MenuItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, rota);
+          Navigator.pushReplacementNamed(context, rota);
         },
         child: Row(
           children: [

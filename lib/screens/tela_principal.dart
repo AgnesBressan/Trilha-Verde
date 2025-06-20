@@ -27,15 +27,19 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
     final caminhoImagem = prefs.getString('imagem_perfil_$nome');
     final chaveArvores = 'arvores_lidas_$nome';
     final arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
-    final numberOfTreesRead = arvoresLidas.length;
+    final qtdArvoresLidas = arvoresLidas.length;
 
     setState(() {
       nomeUsuario = nome;
       if (caminhoImagem != null && File(caminhoImagem).existsSync()) {
         imagemPerfil = File(caminhoImagem);
       }
-      if (numberOfTreesRead > 0 && numberOfTreesRead <= 28) {
-        mainImage = 'lib/assets/img/planta($numberOfTreesRead).png';
+      if (qtdArvoresLidas > 0 && qtdArvoresLidas < 28) {
+        final i = qtdArvoresLidas+1;
+        mainImage = 'lib/assets/img/planta($i).png';
+      }
+      else if(qtdArvoresLidas == 28) {
+        mainImage = 'lib/assets/img/planta.png';
       }
     });
   }
@@ -99,25 +103,27 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             const SizedBox(height: 24),
 
             // Mapa com largura limitada
-            Container(
-              width: 400,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 6,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: AspectRatio(
-                  aspectRatio: 4 / 3,
-                  child: Image.asset(
-                    mainImage,
-                    fit: BoxFit.cover,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/mapa');
+              },
+              child: Container(
+                width: 400,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 6,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: AspectRatio(
+                    aspectRatio: 4 / 3,
+                    child: Image.asset(mainImage, fit: BoxFit.cover),
                   ),
                 ),
               ),

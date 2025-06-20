@@ -44,7 +44,7 @@ class _TelaPontuacaoState extends State<TelaPontuacao> {
         toolbarHeight: 100,
         title: Image.asset('lib/assets/img/logo.png', height: 50),
         centerTitle: false,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.menu, color: Colors.black),
