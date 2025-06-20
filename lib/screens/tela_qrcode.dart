@@ -17,7 +17,7 @@ class _TelaQRCodeState extends State<TelaQRCode> {
   bool cameraStarted = true;
   bool isProcessing = false;
   List<String> arvoresLidas = [];
-
+  int indiceAtual = 0;
 
   @override
   void initState() {
@@ -36,11 +36,18 @@ class _TelaQRCodeState extends State<TelaQRCode> {
     });
   }
 
+  late final List<String> ordemEsperada;
+
   Future<void> _testarLeituraJson() async {
     try {
       print('[TESTE] Tentando ler JSON ao entrar na tela...');
       String jsonString = await rootBundle.loadString('lib/assets/bdtrilhaverde.json');
       final Map<String, dynamic> dados = jsonDecode(jsonString);
+      final Map<String, dynamic> arvores = dados["Árvores Úteis"];
+
+      setState(() {
+        ordemEsperada = arvores.keys.toList(); // chaves em ordem
+      });
 
       print('[SUCESSO] JSON carregado. Árvores disponíveis:');
       for (var chave in dados["Árvores Úteis"].keys) {
@@ -72,47 +79,76 @@ class _TelaQRCodeState extends State<TelaQRCode> {
 
   Future<void> _processQRCode(String codigoQr) async {
     try {
-      print('[DEBUG] Código QR processado: "$codigoQr"');
-      print('[DEBUG] Lendo arquivo JSON...');
       String jsonString = await rootBundle.loadString('lib/assets/bdtrilhaverde.json');
       final Map<String, dynamic> dados = jsonDecode(jsonString);
-      print('[DEBUG] JSON carregado com sucesso.');
-
       final arvores = dados["Árvores Úteis"] as Map<String, dynamic>;
 
-      if (arvores.containsKey(codigoQr)) {
-        final arvoreEncontrada = arvores[codigoQr];
-        final perguntas = arvoreEncontrada["perguntas"];
-        final nomeArvore = arvoreEncontrada["arvore"];
+      // Find the utXX key that matches the scanned QR
+      String? chaveArvoreLida;
+      Map<String, dynamic>? arvoreLida;
 
-        print('[DEBUG] Árvore encontrada: $nomeArvore');
-        print('[DEBUG] Perguntas: $perguntas');
-        if (arvoresLidas.contains(nomeArvore)) {
-          _mostrarErro("Árvore \"$nomeArvore\" já lida!");
+      for (var entry in arvores.entries) {
+        if (entry.value["qrcode"] == codigoQr) {
+          chaveArvoreLida = entry.key;
+          arvoreLida = entry.value;
+          break;
         }
-        else {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder:
-                  (context) =>
-                      TelaQuiz(perguntas: perguntas, nomeArvore: nomeArvore),
-            ),
-          );
-        }
+      }
+
+      if (chaveArvoreLida == null || arvoreLida == null) {
+        _mostrarErro("QR Code \"$codigoQr\" não corresponde a nenhuma árvore!");
+        return;
+      }
+
+      // Now compare the expected utXX key
+      final chaveEsperada = ordemEsperada[indiceAtual];
+      if (chaveArvoreLida != chaveEsperada) {
+        final arvoreEsperada = arvores[chaveEsperada];
+        _mostrarErro(
+          "Você escaneou \"${arvoreLida["arvore"]}\", mas a próxima árvore esperada é \"${arvoreEsperada["arvore"]}\".",
+        );
+        return;
+      }
+
+      // Tree is valid and in the correct order
+      final nomeArvore = arvoreLida["arvore"];
+      final perguntas = arvoreLida["perguntas"];
+
+      if (arvoresLidas.contains(nomeArvore)) {
+        _mostrarErro("Árvore \"$nomeArvore\" já foi lida!");
       } else {
-        print('[ERRO] Nenhuma árvore corresponde ao QR code: "$codigoQr"');
-        _mostrarErro("QR Code \"$codigoQr\" não reconhecido!");
+        final prefs = await SharedPreferences.getInstance();
+        final nome = prefs.getString('nome_usuario') ?? 'Usuário';
+        final chaveIndice = 'indice_atual_$nome';
+        final chaveArvores = 'arvores_lidas_$nome';
+
+        setState(() {
+          indiceAtual++;
+          arvoresLidas.add(nomeArvore);
+          prefs.setInt(chaveIndice, indiceAtual);
+          prefs.setStringList(chaveArvores, arvoresLidas);
+        });
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TelaQuiz(
+              perguntas: perguntas,
+              nomeArvore: nomeArvore,
+            ),
+          ),
+        );
       }
     } catch (e) {
-      print('[ERRO] Falha ao carregar ou processar o JSON: $e');
-      _mostrarErro("Erro ao carregar dados: $e");
+      print('[ERRO] Falha ao processar QR code: $e');
+      _mostrarErro("Erro ao processar QR code.");
     } finally {
       setState(() {
         isProcessing = false;
       });
     }
   }
+
 
   void _mostrarErro(String mensagem) {
     showDialog(
