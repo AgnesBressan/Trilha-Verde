@@ -30,11 +30,15 @@ class _TelaQRCodeState extends State<TelaQRCode> {
     final prefs = await SharedPreferences.getInstance();
     final nome = prefs.getString('nome_usuario') ?? 'Usuário';
     final chaveArvores = 'arvores_lidas_$nome';
+    final chaveIndice = 'indice_atual_$nome';
 
     setState(() {
       arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
+      indiceAtual = prefs.getInt(chaveIndice) ?? 0;
     });
+    print('[INFO] Índice atual carregado: $indiceAtual');
   }
+
 
   late final List<String> ordemEsperada;
 
