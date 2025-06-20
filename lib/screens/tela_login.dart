@@ -9,6 +9,8 @@ class TelaLogin extends StatelessWidget {
   Future<void> salvarNome(String nome) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('nome_usuario', nome);
+    await prefs.setString('ultimo_usuario', nome);
+    print("LOGOU E SALVOU");
   }
 
   @override
