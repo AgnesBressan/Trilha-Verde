@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'tela_quiz.dart';
 
 class TelaQRCode extends StatefulWidget {
@@ -15,11 +16,24 @@ class _TelaQRCodeState extends State<TelaQRCode> {
   String? qrText;
   bool cameraStarted = true;
   bool isProcessing = false;
+  List<String> arvoresLidas = [];
+
 
   @override
   void initState() {
     super.initState();
+    carregarDados();
     _testarLeituraJson();
+  }
+
+  Future<void> carregarDados() async {
+    final prefs = await SharedPreferences.getInstance();
+    final nome = prefs.getString('nome_usuario') ?? 'Usuário';
+    final chaveArvores = 'arvores_lidas_$nome';
+
+    setState(() {
+      arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
+    });
   }
 
   Future<void> _testarLeituraJson() async {
@@ -73,16 +87,19 @@ class _TelaQRCodeState extends State<TelaQRCode> {
 
         print('[DEBUG] Árvore encontrada: $nomeArvore');
         print('[DEBUG] Perguntas: $perguntas');
-
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => TelaQuiz(
-              perguntas: perguntas,
-              nomeArvore: nomeArvore,
+        if (arvoresLidas.contains(nomeArvore)) {
+          _mostrarErro("Árvore \"$nomeArvore\" já lida!");
+        }
+        else {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder:
+                  (context) =>
+                      TelaQuiz(perguntas: perguntas, nomeArvore: nomeArvore),
             ),
-          ),
-        );
+          );
+        }
       } else {
         print('[ERRO] Nenhuma árvore corresponde ao QR code: "$codigoQr"');
         _mostrarErro("QR Code \"$codigoQr\" não reconhecido!");

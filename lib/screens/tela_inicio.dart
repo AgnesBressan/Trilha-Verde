@@ -1,14 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class TelaInicial extends StatelessWidget {
+class TelaInicial extends StatefulWidget {
   const TelaInicial({super.key});
+
+  @override
+  State<TelaInicial> createState() => _TelaInicialState();
+}
+class _TelaInicialState extends State<TelaInicial> {
+  String? ultimoUsuario;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUsuario();
+  }
+
+  Future<void> _loadUsuario() async {
+    final prefs = await SharedPreferences.getInstance();
+    ultimoUsuario = prefs.getString('ultimo_usuario');
+    if (ultimoUsuario != null) {
+      Navigator.pushReplacementNamed(context, '/principal');
+    }
+    else {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFB3E5DC),
       body: Center(
-        child: Column(
+        child: isLoading
+        ? const CircularProgressIndicator()
+        : Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Imagem central

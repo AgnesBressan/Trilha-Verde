@@ -10,7 +10,7 @@ class TelaMenu extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xFF90E0D4),
         elevation: 0,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         title: GestureDetector(
           onTap: () {
             Navigator.pushNamed(context, '/principal');
@@ -64,7 +64,12 @@ class MenuItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushReplacementNamed(context, rota);
+          if (label == "Sair") {
+            Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+          }
+          else {
+            Navigator.pushReplacementNamed(context, rota);
+          }
         },
         child: Row(
           children: [

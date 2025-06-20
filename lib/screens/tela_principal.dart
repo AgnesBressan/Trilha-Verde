@@ -25,21 +25,11 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
 
     final nome = prefs.getString('nome_usuario') ?? 'usuário';
     final caminhoImagem = prefs.getString('imagem_perfil_$nome');
-    final chaveArvores = 'arvores_lidas_$nome';
-    final arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
-    final qtdArvoresLidas = arvoresLidas.length;
 
     setState(() {
       nomeUsuario = nome;
       if (caminhoImagem != null && File(caminhoImagem).existsSync()) {
         imagemPerfil = File(caminhoImagem);
-      }
-      if (qtdArvoresLidas > 0 && qtdArvoresLidas < 28) {
-        final i = qtdArvoresLidas+1;
-        mainImage = 'lib/assets/img/planta($i).png';
-      }
-      else if(qtdArvoresLidas == 28) {
-        mainImage = 'lib/assets/img/planta.png';
       }
     });
   }
