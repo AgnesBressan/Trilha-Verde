@@ -108,7 +108,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
 
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/login');
+                  Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF90E0D4),
