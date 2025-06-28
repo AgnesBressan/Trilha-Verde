@@ -72,10 +72,7 @@ class _TelaQRCodeState extends State<TelaQRCode> {
         cameraStarted = false;
       });
 
-      final uri = Uri.tryParse(code);
-      final codigoArvore = uri != null && uri.pathSegments.isNotEmpty
-          ? uri.pathSegments.last.replaceAll('.php', '')
-          : code;
+      final codigoArvore = code;
 
       await _processQRCode(codigoArvore);
     }
@@ -241,7 +238,7 @@ class _TelaQRCodeState extends State<TelaQRCode> {
                   padding: const EdgeInsets.all(16),
                   width: double.infinity,
                   child: Text(
-                    'QR Lido: $qrText',
+                    'QR Lido: $qrText, QR Esperado: ',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 16,

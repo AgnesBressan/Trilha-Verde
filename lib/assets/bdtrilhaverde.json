@@ -1,25 +1,7 @@
 {
     "Árvores Úteis": {
-        "ut01": {
-            "qrcode": "qr1",
-            "arvore": "Babosa-Branca",
-            "especie": "Cardia superba Cham.",
-            "perguntas": [
-                {
-                    "pergunta": "Sobre a Babosa-branca escolha a alternativa correta:",
-                    "alternativas": {
-                        "A": "Suas flores, brancas e tubulares, aparecem isoladas.",
-                        "B": "Seu fruto possui diversas sementes.",
-                        "C": "Sua madeira é usada na marcenaria, carpintaria e principalmente para obras internas e na indústria de fabricação  de carrocerias.",
-                        "D": "Devido ao seu porte, não é recomendada para arborização de ruas estreitas.",
-                        "E": "Seus frutos não são comestíveis."
-                    },
-                    "resposta_correta": "Sua madeira é usada na marcenaria, carpintaria e principalmente para obras internas e na indústria de fabricação  de carrocerias."
-                }
-            ]
-        },
         "ut02": {
-            "qrcode": "2040",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=4850",
             "arvore": "Eritrina",
             "especie": "Erythrina velutina Willd.",
             "perguntas": [
@@ -37,7 +19,7 @@
             ]
         },
         "ut03": {
-            "qrcode": "qr3",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=5433",
             "arvore": "Pau-Jacaré",
             "especie": "Piptadenia gonoacantha (Mart.) J. F. Macbr.",
             "perguntas": [
@@ -54,26 +36,8 @@
                 }
             ]
         },
-        "ut04": {
-            "qrcode": "NÃO VISIVEL",
-            "arvore": "Guapuruvu",
-            "especie": "Schizolobium parahyba (Vell.) Blake",
-            "perguntas": [
-                {
-                    "pergunta": "Sobre o Guapuruvu, escolha a alternativa incorreta:",
-                    "alternativas": {
-                        "A": "Pela quebra fácil da madeira, é indicada para arborização de parques e jardins.",
-                        "B": "Possui entre 10 a 30 metros de altura.",
-                        "C": "Seu tronco não possui ramificações e apresenta uma coroa de folhas no ápice.",
-                        "D": "Suas folhas são bipinadas, ou seja, possui folíolos (pequenas folhas que compõem a folha composta) que se dividem novamente em foliólulos.",
-                        "E": "Sua madeira é usada para confecção de papeis, portas, compensados, embalagens leves, forros, palitos, canoas, brinquedos, etc."
-                    },
-                    "resposta_correta": "Pela quebra fácil da madeira, é indicada para arborização de parques e jardins."
-                }
-            ]
-        },
         "ut05": {
-            "qrcode": "qr5",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=3957",
             "arvore": "Cambará",
             "especie": "Gochnatia polymorpha (Less.) Cabrera",
             "perguntas": [
@@ -90,44 +54,8 @@
                 }
             ]
         },
-        "ut06": {
-            "qrcode": "qr6",
-            "arvore": "Ceiba",
-            "especie": "Ceiba erianthus (Cav.) K. Shum.",
-            "perguntas": [
-                {
-                    "pergunta": "Escolha a alternativa incorreta sobre a Ceiba:",
-                    "alternativas": {
-                        "A": "Seus troncos possuem acúleos, estruturas parecidas com espinhos, que se destacam facilmente.",
-                        "B": "Sua casca possui cicatrizes que lembram círculos.",
-                        "C": "Por ter baixa durabilidade, sua madeira não possui valor prático.",
-                        "D": "Essa espécie possui grande valor ornamental.",
-                        "E": "Possui uma madeira leve, macia e de baixa durabilidade. Usada na confecção de jangadas, embalagens leves, brinquedos, compensados, canoas, etc."
-                    },
-                    "resposta_correta": "Por ter baixa durabilidade, sua madeira não possui valor prático."
-                }
-            ]
-        },
-        "ut07": {
-            "qrcode": "qr7",
-            "arvore": "Paineira",
-            "especie": "Chorisia speciosa A. St.- Hil.",
-            "perguntas": [
-                {
-                    "pergunta": "Escolha a alternativa incorreta sobre a Paineira:",
-                    "alternativas": {
-                        "A": "Sua madeira é usada na fabricação de canoas e caixotarias.",
-                        "B": "Sua madeira, pesada e dura, é difícil de trabalhar.",
-                        "C": "Seu fruto é coberto por pelos brancos (paina).",
-                        "D": "A paina produzida por essa espécie  serve para encher colchões, travesseiros e almofadas.",
-                        "E": "Devido a sua rusticidade e beleza de floração, possui grande valor ornamental."
-                    },
-                    "resposta_correta": "Sua madeira, pesada e dura, é difícil de trabalhar."
-                }
-            ]
-        },
         "ut08": {
-            "qrcode": "qr8",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=04",
             "arvore": "Ipê-Amarelo",
             "especie": "Tabebuia chrysotricha (Mart ex A. DC.) Standl.",
             "perguntas": [
@@ -144,26 +72,8 @@
                 }
             ]
         },
-        "ut09": {
-            "qrcode": "qr9",
-            "arvore": "Chichá",
-            "especie": "Sterculia chicha A. St.-Hil.",
-            "perguntas": [
-                {
-                    "pergunta": "Escolha a alternativa incorreta sobre o Chichá:",
-                    "alternativas": {
-                        "A": "Essa árvore tem de 10 a 25 m de altura.",
-                        "B": "Seus ramos possuem cicatrizes foliares, marcas deixadas pelas folhas ao caírem do galho.",
-                        "C": "Possui uma madeira de cor parda, leve, mole e de baixa durabilidade.",
-                        "D": "Sua madeira é usada em obras internas, onde não há exposição direta à umidade, sol, ou ataques de fungos/insetos, como em forros e tabuados.",
-                        "E": "Sua madeira possui alta durabilidade."
-                    },
-                    "resposta_correta": "Sua madeira possui alta durabilidade."
-                }
-            ]
-        },
         "ut10": {
-            "qrcode": "qr10",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=3994",
             "arvore": "Chuva-de-Ouro",
             "especie": "Lophantera lactescens Ducke.",
             "perguntas": [
@@ -180,44 +90,8 @@
                 }
             ]
         },
-        "ut11": {
-            "qrcode": "qr11",
-            "arvore": "Embira-Puitá",
-            "especie": "Peltophorum fubium (Spreng.) Taub.",
-            "perguntas": [
-                {
-                    "pergunta": "Escolha a alternativa incorreta sobre o Embira-Puitá:",
-                    "alternativas": {
-                        "A": "Possui frutos suculentos e comestíveis.",
-                        "B": "Suas folhas são bipinadas, ou seja, possui folíolos (pequenas folhas que compõem a folha composta) que se dividem novamente em foliólulos.",
-                        "C": "Devido ao seu rápido crescimento, é utilizada na recuperação de áreas degradadas.",
-                        "D": "De sua madeira, reduzida a pó, se extrai tinta vermelha usada como corante.",
-                        "E": "Possui uma madeira róseo-acinzentada, de longa durabilidade em ambientes cobertos."
-                    },
-                    "resposta_correta": "Possui frutos suculentos e comestíveis."
-                }
-            ]
-        },
-        "ut12": {
-            "qrcode": "SEM QRCODE",
-            "arvore": "Sumaúma",
-            "especie": "Ceiba pentandra (L.) Gaertn.",
-            "perguntas": [
-                {
-                    "pergunta": "Qual o principal uso da paina (pelos branquinhos que cobrem as sementes) da Sumaúma?",
-                    "alternativas": {
-                        "A": "Produção de papel.",
-                        "B": "Construção de móveis.",
-                        "C": "Enchimento de colchões, travesseiros e coletes salva-vidas.",
-                        "D": "Alimento para animais.",
-                        "E": "Produção de corantes."
-                    },
-                    "resposta_correta": "Enchimento de colchões, travesseiros e coletes salva-vidas."
-                }
-            ]
-        },
         "ut13": {
-            "qrcode": "2029",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=4040",
             "arvore": "Abricó-de-Macaco",
             "especie": "Couroupita guianensis Aubl.",
             "perguntas": [
@@ -231,24 +105,6 @@
                         "E": "Pode ser utilizada em vigas na construção de casas."
                     },
                     "resposta_correta": "Pode ser utilizada em vigas na construção de casas."
-                }
-            ]
-        },
-        "ut14": {
-            "qrcode": "qr14",
-            "arvore": "Ipê-Amarelo",
-            "especie": "Tabebuia ochraceae (Cham.) Standl.",
-            "perguntas": [
-                {
-                    "pergunta": "Escolha a alternativa incorreta sobre o Ipê-Amarelo (Ta:bebuia ochraceae)",
-                    "alternativas": {
-                        "A": "Sua madeira é utilizada na produção de embalagens leves.",
-                        "B": "Sua madeira, dura ao corte, possui grande durabilidade, mesmo em condições favoráveis ao apodrecimento.",
-                        "C": "Sua madeira é própria para usos externos (assoalhos, batentes, cabos de ferramenta, etc.).",
-                        "D": "Seu fruto apresenta tomento (camada de pelos finos e macios), que se desprende com facilidade.",
-                        "E": "Seu florescimento por ser muito belo, estimula seu uso no paisagismo em geral."
-                    },
-                    "resposta_correta": "Sua madeira é utilizada na produção de embalagens leves."
                 }
             ]
         },
@@ -270,26 +126,8 @@
                 }
             ]
         },
-        "ut16": {
-            "qrcode": "qr16",
-            "arvore": "Jequitibá-Branco",
-            "especie": "Cariniana estrellensis (Raddi) Kuntze",
-            "perguntas": [
-                {
-                    "pergunta": "Qual das seguintes alternativas sobre o Jequitibá-Branco está incorreta?",
-                    "alternativas": {
-                        "A": "Seu tronco é delgado e reto, não podendo chegar a mais de 50 cm de espessura.",
-                        "B": "Sua madeira, de grandes dimensões, tem baixa resistência a ambientes externos.",
-                        "C": "Sua madeira é usada em móveis, molduras, forros, brinquedos e cabos de ferramentas.",
-                        "D": "As folhas e cascas produzem tanino, substância utilizada para transformar a pele animal em couro.",
-                        "E": "Seu fruto é muito utilizado na confecção de cachimbos."
-                    },
-                    "resposta_correta": "Seu tronco é delgado e reto, não podendo chegar a mais de 50 cm de espessura."
-                }
-            ]
-        },
         "ut17": {
-            "qrcode": "qr17",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=3846",
             "arvore": "Ipê-Branco",
             "especie": "Tabebua roseo-alba (Rdl.) Sandw.",
             "perguntas": [
@@ -307,7 +145,7 @@
             ]
         },
         "ut18": {
-            "qrcode": "1330",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=1345",
             "arvore": "Jequitibá-Rosa",
             "especie": "Cariniana legalis (Mart.) Kuntze",
             "perguntas": [
@@ -325,7 +163,7 @@
             ]
         },
         "ut19": {
-            "qrcode": "qr19",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=1297",
             "arvore": "Coração-de-Negro",
             "especie": "Poecilanthe parviflora Benth.",
             "perguntas": [
@@ -343,7 +181,7 @@
             ]
         },
         "ut20": {
-            "qrcode": "1367",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=1367",
             "arvore": "Seringueira",
             "especie": "Hevea brasiliensis (Kuth) Müll. Arg.",
             "perguntas": [
@@ -360,26 +198,8 @@
                 }
             ]
         },
-        "ut21": {
-            "qrcode": "qr21",
-            "arvore": "Jacarandá-Mimoso",
-            "especie": "Jacaranda mimosifolia D. Don",
-            "perguntas": [
-                {
-                    "pergunta": "Em qual dos estados abaixo o Jacarandá-Mimoso ocorre?",
-                    "alternativas": {
-                        "A": "Amazonas.",
-                        "B": "São Paulo.",
-                        "C": "Espírito Santo.",
-                        "D": "Rio de Janeiro.",
-                        "E": "Rio Grande do Sul."
-                    },
-                    "resposta_correta": "São Paulo."
-                }
-            ]
-        },
         "ut22": {
-            "qrcode": "SEM QRCODE",
+            "qrcode": "semQR",
             "arvore": "Pau-Formiga",
             "especie": "Triplaris americana L.",
             "perguntas": [
@@ -396,26 +216,8 @@
                 }
             ]
         },
-        "ut23": {
-            "qrcode": "qr23",
-            "arvore": "Boleira",
-            "especie": "Triplaris americana L.",
-            "perguntas": [
-                {
-                    "pergunta": "Qual das opções abaixo não é uma utilidade da Boleira? ",
-                    "alternativas": {
-                        "A": "Pintura.",
-                        "B": "Marcenaria.",
-                        "C": "Sombreamento de pastagens.",
-                        "D": "Arborização de ruas.",
-                        "E": "Uso Medicinal."
-                    },
-                    "resposta_correta": "Arborização de ruas."
-                }
-            ]
-        },
         "ut24": {
-            "qrcode": "qr24",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=605",
             "arvore": "Timboúva",
             "especie": "Enterolobium contortisiliquum (Vell.) Morong",
             "perguntas": [
@@ -433,7 +235,7 @@
             ]
         },
         "ut25": {
-            "qrcode": "qr25",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=1362",
             "arvore": "Escovinha",
             "especie": "Melaleuca leucadenddron L.",
             "perguntas": [
@@ -451,7 +253,7 @@
             ]
         },
         "ut26": {
-            "qrcode": "qr26",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=3990",
             "arvore": "Flor-de-Abril",
             "especie": "Dillenia indica L.",
             "perguntas": [
@@ -469,7 +271,7 @@
             ]
         },
         "ut27": {
-            "qrcode": "qr27",
+            "qrcode": "http://silvaurba.esalq.usp.br/cadgeoesalq/arvore.php?narvore=593",
             "arvore": "Imbiruçu",
             "especie": "Pseudobombax grandiflorum (Cav.) A. Robyns",
             "perguntas": [
@@ -483,24 +285,6 @@
                         "E": "Seus frutos são secos e, quando amadurecem, se abrem para soltar as sementes."
                     },
                     "resposta_correta": "Seus frutos são cobertos por pelos brancos bem compridos."
-                }
-            ]
-        },
-        "ut28": {
-            "qrcode": "qr28",
-            "arvore": "Açoita-Cavalo",
-            "especie": "Luehea divaricata Mart.",
-            "perguntas": [
-                {
-                    "pergunta": "Quantos metros essa árvore pode atingir?",
-                    "alternativas": {
-                        "A": "Cerca de 5 metros de altura.",
-                        "B": "Cerca de 10 metros de altura.",
-                        "C": "Cerca de 15 metros de altura.",
-                        "D": "Cerca de 20 metros de altura.",
-                        "E": "Cerca de 25 metros de altura."
-                    },
-                    "resposta_correta": "Cerca de 10 metros de altura."
                 }
             ]
         }
