@@ -32,7 +32,8 @@ class _TelaQuizState extends State<TelaQuiz> {
 
   Future<void> responder(int indice) async {
     if (respondido) {
-      return;}
+      return;
+    }
 
       setState(() {
         respostaSelecionada = indice;
@@ -61,7 +62,6 @@ class _TelaQuizState extends State<TelaQuiz> {
       Navigator.pop(context, true);
     });
     }
-  }
 
   @override
   Widget build(BuildContext context) {
