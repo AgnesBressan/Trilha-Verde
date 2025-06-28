@@ -84,6 +84,8 @@ class _TelaQRCodeState extends State<TelaQRCode> {
   Future<void> _processQRCode(String codigoQr) async {
     try {
       String jsonString = await rootBundle.loadString('lib/assets/bdtrilhaverde.json');
+      if (!mounted) return;
+
       final Map<String, dynamic> dados = jsonDecode(jsonString);
       final arvores = dados["Árvores Úteis"] as Map<String, dynamic>;
 
@@ -107,6 +109,7 @@ class _TelaQRCodeState extends State<TelaQRCode> {
       // Now compare the expected utXX key
       final chaveEsperada = ordemEsperada[indiceAtual];
       if (chaveArvoreLida != chaveEsperada) {
+        if (!mounted) return;
         final arvoreEsperada = arvores[chaveEsperada];
         _mostrarErro(
           "Você escaneou \"${arvoreLida["arvore"]}\", mas a próxima árvore esperada é \"${arvoreEsperada["arvore"]}\".",
@@ -122,18 +125,15 @@ class _TelaQRCodeState extends State<TelaQRCode> {
         _mostrarErro("Árvore \"$nomeArvore\" já foi lida!");
       } else {
         final prefs = await SharedPreferences.getInstance();
+        if (!mounted) return;
+
         final nome = prefs.getString('nome_usuario') ?? 'Usuário';
         final chaveIndice = 'indice_atual_$nome';
         final chaveArvores = 'arvores_lidas_$nome';
 
-        setState(() {
-          indiceAtual++;
-          arvoresLidas.add(nomeArvore);
-          prefs.setInt(chaveIndice, indiceAtual);
-          prefs.setStringList(chaveArvores, arvoresLidas);
-        });
+        bool respondido = false;
 
-        Navigator.pushReplacement(
+        respondido = await Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => TelaQuiz(
@@ -142,11 +142,23 @@ class _TelaQRCodeState extends State<TelaQRCode> {
             ),
           ),
         );
+
+        if (!mounted) return;
+
+        if (respondido == true) {
+          setState(() {
+            indiceAtual++;
+            arvoresLidas.add(nomeArvore);
+            prefs.setInt(chaveIndice, indiceAtual);
+            prefs.setStringList(chaveArvores, arvoresLidas);
+          });
+        }
       }
     } catch (e) {
       print('[ERRO] Falha ao processar QR code: $e');
       _mostrarErro("Erro ao processar QR code.");
     } finally {
+      if (!mounted) return;
       setState(() {
         isProcessing = false;
       });

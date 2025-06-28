@@ -31,28 +31,35 @@ class _TelaQuizState extends State<TelaQuiz> {
   }
 
   Future<void> responder(int indice) async {
-    if (respondido) return;
+    if (respondido) {
+      return;}
 
-    setState(() {
-      respostaSelecionada = indice;
-      respondido = true;
-    });
+      setState(() {
+        respostaSelecionada = indice;
+        respondido = true;
+      });
 
-    if (alternativas[indice] == respostaCorreta) {
-      final prefs = await SharedPreferences.getInstance();
-      final nomeUsuario = prefs.getString('nome_usuario') ?? 'Usuário';
-      final chavePontuacao = 'pontuacao_$nomeUsuario';
-      final chaveArvores = 'arvores_lidas_$nomeUsuario';
+      if (alternativas[indice] == respostaCorreta) {
+        final prefs = await SharedPreferences.getInstance();
+        final nomeUsuario = prefs.getString('nome_usuario') ?? 'Usuário';
+        final chavePontuacao = 'pontuacao_$nomeUsuario';
+        final chaveArvores = 'arvores_lidas_$nomeUsuario';
 
-      final arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
+        final arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
 
-      if (!arvoresLidas.contains(widget.nomeArvore)) {
-        arvoresLidas.add(widget.nomeArvore);
-        await prefs.setStringList(chaveArvores, arvoresLidas);
+        if (!arvoresLidas.contains(widget.nomeArvore)) {
+          arvoresLidas.add(widget.nomeArvore);
+          await prefs.setStringList(chaveArvores, arvoresLidas);
 
-        final pontuacaoAtual = prefs.getInt(chavePontuacao) ?? 0;
-        await prefs.setInt(chavePontuacao, pontuacaoAtual + 1);
+          final pontuacaoAtual = prefs.getInt(chavePontuacao) ?? 0;
+          await prefs.setInt(chavePontuacao, pontuacaoAtual + 1);
+        }
       }
+
+    await Future.delayed(const Duration(seconds: 2), () {
+      if (!mounted) return;
+      Navigator.pop(context, true);
+    });
     }
   }
 
