@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'tela_quiz.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TelaQRCode extends StatefulWidget {
   const TelaQRCode({super.key});
@@ -60,47 +61,78 @@ class _TelaQRCodeState extends State<TelaQRCode> {
     }
   }
 
-  Future<void> _processQRCode(String idArvore) async {
-    try {
-      print('[DEBUG] Código QR processado: "$idArvore"');
-      print('[DEBUG] Lendo arquivo JSON...');
-      String jsonString = await rootBundle.loadString('lib/assets/bdtrilhaverde.json');
-      final Map<String, dynamic> dados = jsonDecode(jsonString);
-      print('[DEBUG] JSON carregado com sucesso.');
+Future<void> _processQRCode(String idArvore) async {
+  try {
+    print('[DEBUG] Código QR processado: "$idArvore"');
+    String jsonString = await rootBundle.loadString('lib/assets/bdtrilhaverde.json');
+    final Map<String, dynamic> dados = jsonDecode(jsonString);
+    final arvores = dados["Árvores Úteis"] as Map<String, dynamic>;
 
-      final arvores = dados["Árvores Úteis"] as Map<String, dynamic>;
-
-      if (arvores.containsKey(idArvore)) {
-        final arvoreEncontrada = arvores[idArvore];
-        final perguntas = arvoreEncontrada["perguntas"];
-        final nomeArvore = arvoreEncontrada["arvore"];
-
-        print('[DEBUG] Árvore encontrada: $nomeArvore');
-        print('[DEBUG] Perguntas: $perguntas');
-
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => TelaQuiz(
-              perguntas: perguntas,
-              nomeArvore: nomeArvore,
-              idArvore: idArvore, // importante passar o id
-            ),
-          ),
-        );
-      } else {
-        print('[ERRO] Nenhuma árvore corresponde ao QR code: "$idArvore"');
-        _mostrarErro("QR Code \"$idArvore\" não reconhecido!");
-      }
-    } catch (e) {
-      print('[ERRO] Falha ao carregar ou processar o JSON: $e');
-      _mostrarErro("Erro ao carregar dados: $e");
-    } finally {
-      setState(() {
-        isProcessing = false;
-      });
+    if (!arvores.containsKey(idArvore)) {
+      _mostrarErro("QR Code \"$idArvore\" não reconhecido!");
+      return;
     }
+
+    final arvoreEncontrada = arvores[idArvore];
+    final int sequenciaLida = arvoreEncontrada["sequencia"];
+    final nomeArvore = arvoreEncontrada["arvore"];
+    final perguntas = arvoreEncontrada["perguntas"];
+
+    final prefs = await SharedPreferences.getInstance();
+
+    final int ultimaSequencia = prefs.getInt('ultimaSequenciaDesbloqueada') ?? 0;
+    final String? ultimaArvoreLida = prefs.getString('ultimaArvoreLida');
+
+    // 1. Se a árvore já foi lida, mas ainda não respondida corretamente (usuário errou)
+    if (idArvore == ultimaArvoreLida && sequenciaLida == ultimaSequencia + 1) {
+      // permite refazer a pergunta da árvore atual
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => TelaQuiz(
+            perguntas: perguntas,
+            nomeArvore: nomeArvore,
+            idArvore: idArvore,
+          ),
+        ),
+      );
+      return;
+    }
+
+    // 2. Se a árvore já foi visitada (sequência menor que última desbloqueada)
+    if (sequenciaLida <= ultimaSequencia) {
+      _mostrarErro("Você já visitou essa árvore!");
+      return;
+    }
+
+    // 3. Se for a árvore atual (sequencia == ultima + 1), deixa entrar e registra o ID
+    if (sequenciaLida == ultimaSequencia + 1) {
+      // marca como última árvore lida (permite repetir enquanto não acertar)
+      await prefs.setString('ultimaArvoreLida', idArvore);
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => TelaQuiz(
+            perguntas: perguntas,
+            nomeArvore: nomeArvore,
+            idArvore: idArvore,
+          ),
+        ),
+      );
+      return;
+    }
+
+    // 4. Qualquer outro caso: árvore futura ainda não desbloqueada
+    _mostrarErro("Você ainda não desbloqueou esta árvore.\nSiga a ordem da trilha!");
+  } catch (e) {
+    _mostrarErro("Erro ao carregar dados: $e");
+  } finally {
+    setState(() {
+      isProcessing = false;
+    });
   }
+}
 
   void _mostrarErro(String mensagem) {
     showDialog(

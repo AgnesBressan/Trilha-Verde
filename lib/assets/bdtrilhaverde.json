@@ -4,6 +4,7 @@
             "id": "ut02",
             "arvore": "Eritrina",
             "especie": "Erythrina velutina Willd.",
+            "sequencia": 1,
             "perguntas": [
                 {
                     "pergunta": "Sobre a Eritrina, escolha a alternativa incorreta:",
@@ -22,6 +23,7 @@
             "id": "ut03",
             "arvore": "Pau-Jacaré",
             "especie": "Piptadenia gonoacantha (Mart.) J. F. Macbr.",
+            "sequencia": 2,
             "perguntas": [
                 {
                     "pergunta": "Sobre o Pau-Jacaré, escolha a alternativa incorreta:",
@@ -40,6 +42,7 @@
             "id": "ut05",
             "arvore": "Cambará",
             "especie": "Gochnatia polymorpha (Less.) Cabrera",
+            "sequencia": 3,
             "perguntas": [
                 {
                     "pergunta": "Sobre o Cambará, escolha a alternativa correta:",
@@ -47,10 +50,10 @@
                         "A": "Sua madeira, usada na produção de ferramentas e artefatos de uso doméstico, é leve e pouco resistente ao apodrecimento.",
                         "B": "Essa árvore não possui valor medicinal.",
                         "C": "A espécie possui alto valor madeireiro em razão da tortuosidade de seu tronco.",
-                        "D": "Possui aplicações na medicina popular, como expectorante  e emoliente.",
+                        "D": "Possui aplicações na medicina popular, como expectorante  e emoliente.",
                         "E": "Suas flores branco-amareladas aparecem isoladas."
                     },
-                    "resposta_correta": "Possui aplicações na medicina popular, como expectorante  e emoliente."
+                    "resposta_correta": "Possui aplicações na medicina popular, como expectorante  e emoliente."
                 }
             ]
         },
@@ -58,6 +61,7 @@
             "id": "ut08",
             "arvore": "Ipê-Amarelo",
             "especie": "Tabebuia chrysotricha (Mart ex A. DC.) Standl.",
+            "sequencia": 4,
             "perguntas": [
                 {
                     "pergunta": "Escolha a alternativa correta sobre o Ipê-Amarelo (Tabebuia chrysotricha):",
@@ -75,7 +79,8 @@
         "3994": {
             "id": "ut10",
             "arvore": "Chuva-de-Ouro",
-            "especie": "Lophantera lactescens Ducke.",
+            "especie": "Lophantera lactescens Ducke.",
+            "sequencia": 5,
             "perguntas": [
                 {
                     "pergunta": "Escolha a alternativa incorreta sobre a Chuva-de-Ouro:",
@@ -93,7 +98,8 @@
         "4040": {
             "id": "ut13",
             "arvore": "Abricó-de-Macaco",
-            "especie": "Couroupita guianensis Aubl.",
+            "especie": "Couroupita guianensis Aubl.",
+            "sequencia": 6,
             "perguntas": [
                 {
                     "pergunta": "Quais das seguintes alternativas não contém um dos usos dessa árvore?",
@@ -101,7 +107,7 @@
                         "A": "Sua madeira, macia, leve e pouco durável é usada na fabricação de embalagens e artefatos leves.",
                         "B": "Pode ser usada para a fabricação de folhas de madeira, utilizada para cobrir superfícies e dar-lhes uma aparência de madeira maciça.",
                         "C": "Devido a sua beleza durante o florescimento, é excelente para o paisagismo.",
-                        "D": "Seus frutos de polpa azulada possuem  sementes comestíveis.",
+                        "D": "Seus frutos de polpa azulada possuem  sementes comestíveis.",
                         "E": "Pode ser utilizada em vigas na construção de casas."
                     },
                     "resposta_correta": "Pode ser utilizada em vigas na construção de casas."
@@ -111,13 +117,14 @@
         "593": {
             "id": "ut17",
             "arvore": "Ipê-Branco",
-            "especie": "Tabebua roseo-alba (Rdl.) Sandw.",
+            "especie": "Tabebua roseo-alba (Rdl.) Sandw.",
+            "sequencia": 7,
             "perguntas": [
                 {
                     "pergunta": "Qual das seguintes alternativas sobre o Ipê-Branco (Handroanthus roseo-albus) está incorreta?",
                     "alternativas": {
                         "A": "A madeira do Ipê-Branco é moderadamente pesada e macia, com ótima durabilidade, sendo utilizada em assoalhos e vigas, na construção naval e em obras externas.",
-                        "B": "Suas sementes são aladas, ou seja,  possuem estruturas aerodinâmicas que as ajudam a se espalhar com o vento.",
+                        "B": "Suas sementes são aladas, ou seja,  possuem estruturas aerodinâmicas que as ajudam a se espalhar com o vento.",
                         "C": "Seus frutos são cápsulas arredondadas, longas e finas, contendo numerosas sementes aladas.",
                         "D": "As flores do Ipê-Branco são pequenas e de cor amarela vibrante.",
                         "E": "Essa árvore se apresenta exuberante durante sua floração, sendo muito usada na arborização de ruas e avenidas."
@@ -140,7 +147,8 @@
         "1345": {
             "id": "ut18",
             "arvore": "Jequitibá-Rosa",
-            "especie": "Cariniana legalis (Mart.) Kuntze",
+            "especie": "Cariniana legalis (Mart.) Kuntze",
+            "sequencia": 8,
             "perguntas": [
                 {
                     "pergunta": "Escolha a alternativa incorreta sobre o Jequitibá-Rosa:",
@@ -158,7 +166,8 @@
         "1297": {
             "id": "ut19",
             "arvore": "Coração-de-Negro",
-            "especie": "Poecilanthe parviflora Benth.",
+            "especie": "Poecilanthe parviflora Benth.",
+            "sequencia": 9,
             "perguntas": [
                 {
                     "pergunta": "Sobre a árvore coração-de-negro, escolha a alternativa correta:",
@@ -177,6 +186,7 @@
             "id": "ut20",
             "arvore": "Seringueira",
             "especie": "Hevea brasiliensis (Kuth) Müll. Arg.",
+            "sequencia": 10,
             "perguntas": [
                 {
                     "pergunta": "Sobre a seringueira, escolha a alternativa incorreta",
@@ -194,10 +204,11 @@
         "1362": {
             "id": "ut25",
             "arvore": "Escovinha",
-            "especie": "Melaleuca leucadenddron L.",
+            "especie": "Melaleuca leucadenddron L.",
+            "sequencia": 11,
             "perguntas": [
                 {
-                    "pergunta": "Sobre a escovinha, escolha a alternativa correta: ",
+                    "pergunta": "Sobre a escovinha, escolha a alternativa correta: ",
                     "alternativas": {
                         "A": "Suas flores são brancas ou amarelas e aparecem nas pontas dos galhos.",
                         "B": "Suas flores têm fios amarelos brilhantes.",
@@ -212,10 +223,11 @@
         "3990": {
             "id": "ut26",
             "arvore": "Flor-de-Abril",
-            "especie": "Dillenia indica L.",
+            "especie": "Dillenia indica L.",
+            "sequencia": 12,
             "perguntas": [
                 {
-                    "pergunta": "Sobre a árvore flor-de-abril, escolha a alternativa incorreta: ",
+                    "pergunta": "Sobre a árvore flor-de-abril, escolha a alternativa incorreta: ",
                     "alternativas": {
                         "A": "Seus frutos contêm 10 sementes.",
                         "B": "Sua madeira é própria para construção naval, sendo usada em obras imersas na água.",

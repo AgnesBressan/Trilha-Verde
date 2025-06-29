@@ -40,22 +40,31 @@ class _TelaQuizState extends State<TelaQuiz> {
       respondido = true;
     });
 
-    if (alternativas[indice] == respostaCorreta) {
-      final prefs = await SharedPreferences.getInstance();
-      final nomeUsuario = prefs.getString('nome_usuario') ?? 'Usuário';
-      final chavePontuacao = 'pontuacao_$nomeUsuario';
-      final chaveArvores = 'arvores_lidas_$nomeUsuario';
+    final prefs = await SharedPreferences.getInstance();
+    final nomeUsuario = prefs.getString('nome_usuario') ?? 'Usuário';
+    final chavePontuacao = 'pontuacao_$nomeUsuario';
+    final chaveArvores = 'arvores_lidas_$nomeUsuario';
 
-      final arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
+    final arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
 
-      if (!arvoresLidas.contains(widget.idArvore)) { // SALVAR O ID
+    final bool acertou = alternativas[indice] == respostaCorreta;
+
+    if (acertou) {
+      if (!arvoresLidas.contains(widget.idArvore)) {
+        // só salva como "lida" se for acerto
         arvoresLidas.add(widget.idArvore);
         await prefs.setStringList(chaveArvores, arvoresLidas);
 
         final pontuacaoAtual = prefs.getInt(chavePontuacao) ?? 0;
         await prefs.setInt(chavePontuacao, pontuacaoAtual + 1);
+        print('[DEBUG] +1 ponto! Nova pontuação salva.');
 
-        print('[DEBUG] Árvore ${widget.idArvore} salva como lida!');
+        // atualiza o progresso da trilha
+        final sequenciaAtual = prefs.getInt('ultimaSequenciaDesbloqueada') ?? 0;
+        await prefs.setInt('ultimaSequenciaDesbloqueada', sequenciaAtual + 1);
+
+        // remove referência à árvore atual para impedir refazer
+        await prefs.remove('ultimaArvoreLida');
       }
     }
   }
