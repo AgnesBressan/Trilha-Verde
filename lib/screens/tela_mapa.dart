@@ -23,7 +23,7 @@ class _TelaMapaState extends State<TelaMapa> {
     final nome = prefs.getString('nome_usuario') ?? 'usuário';
     final chaveArvores = 'arvores_lidas_$nome';
     final arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
-    final qtdArvoresLidas = arvoresLidas.length;
+    final qtdArvoresLidas = arvoresLidas.length+1;
 
     setState(() {
       if (qtdArvoresLidas > 0 && qtdArvoresLidas < 28) {
