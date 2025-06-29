@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'tela_quiz.dart';
 
 class TelaQRCode extends StatefulWidget {
@@ -16,24 +15,11 @@ class _TelaQRCodeState extends State<TelaQRCode> {
   String? qrText;
   bool cameraStarted = true;
   bool isProcessing = false;
-  List<String> arvoresLidas = [];
-
 
   @override
   void initState() {
     super.initState();
-    carregarDados();
     _testarLeituraJson();
-  }
-
-  Future<void> carregarDados() async {
-    final prefs = await SharedPreferences.getInstance();
-    final nome = prefs.getString('nome_usuario') ?? 'Usuário';
-    final chaveArvores = 'arvores_lidas_$nome';
-
-    setState(() {
-      arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
-    });
   }
 
   Future<void> _testarLeituraJson() async {
@@ -62,17 +48,21 @@ class _TelaQRCodeState extends State<TelaQRCode> {
       });
 
       final uri = Uri.tryParse(code);
-      final codigoArvore = uri != null && uri.pathSegments.isNotEmpty
-          ? uri.pathSegments.last.replaceAll('.php', '')
-          : code;
+      final idArvore = uri != null && uri.queryParameters.containsKey('narvore')
+          ? uri.queryParameters['narvore']
+          : null;
 
-      await _processQRCode(codigoArvore);
+      if (idArvore != null) {
+        await _processQRCode(idArvore);
+      } else {
+        _mostrarErro("QR Code inválido!");
+      }
     }
   }
 
-  Future<void> _processQRCode(String codigoQr) async {
+  Future<void> _processQRCode(String idArvore) async {
     try {
-      print('[DEBUG] Código QR processado: "$codigoQr"');
+      print('[DEBUG] Código QR processado: "$idArvore"');
       print('[DEBUG] Lendo arquivo JSON...');
       String jsonString = await rootBundle.loadString('lib/assets/bdtrilhaverde.json');
       final Map<String, dynamic> dados = jsonDecode(jsonString);
@@ -80,29 +70,27 @@ class _TelaQRCodeState extends State<TelaQRCode> {
 
       final arvores = dados["Árvores Úteis"] as Map<String, dynamic>;
 
-      if (arvores.containsKey(codigoQr)) {
-        final arvoreEncontrada = arvores[codigoQr];
+      if (arvores.containsKey(idArvore)) {
+        final arvoreEncontrada = arvores[idArvore];
         final perguntas = arvoreEncontrada["perguntas"];
         final nomeArvore = arvoreEncontrada["arvore"];
 
         print('[DEBUG] Árvore encontrada: $nomeArvore');
         print('[DEBUG] Perguntas: $perguntas');
-        if (arvoresLidas.contains(nomeArvore)) {
-          _mostrarErro("Árvore \"$nomeArvore\" já lida!");
-        }
-        else {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder:
-                  (context) =>
-                      TelaQuiz(perguntas: perguntas, nomeArvore: nomeArvore),
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TelaQuiz(
+              perguntas: perguntas,
+              nomeArvore: nomeArvore,
+              idArvore: idArvore, // importante passar o id
             ),
-          );
-        }
+          ),
+        );
       } else {
-        print('[ERRO] Nenhuma árvore corresponde ao QR code: "$codigoQr"');
-        _mostrarErro("QR Code \"$codigoQr\" não reconhecido!");
+        print('[ERRO] Nenhuma árvore corresponde ao QR code: "$idArvore"');
+        _mostrarErro("QR Code \"$idArvore\" não reconhecido!");
       }
     } catch (e) {
       print('[ERRO] Falha ao carregar ou processar o JSON: $e');
@@ -144,7 +132,6 @@ class _TelaQRCodeState extends State<TelaQRCode> {
         backgroundColor: const Color(0xFF90E0D4),
         elevation: 0,
         toolbarHeight: 100,
-        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

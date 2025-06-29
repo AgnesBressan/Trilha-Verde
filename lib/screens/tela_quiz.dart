@@ -4,11 +4,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 class TelaQuiz extends StatefulWidget {
   final List<dynamic> perguntas;
   final String nomeArvore;
+  final String idArvore; // Adicionar o id
 
   const TelaQuiz({
     super.key,
     required this.perguntas,
     required this.nomeArvore,
+    required this.idArvore, // Adicionar o id
   });
 
   @override
@@ -46,12 +48,14 @@ class _TelaQuizState extends State<TelaQuiz> {
 
       final arvoresLidas = prefs.getStringList(chaveArvores) ?? [];
 
-      if (!arvoresLidas.contains(widget.nomeArvore)) {
-        arvoresLidas.add(widget.nomeArvore);
+      if (!arvoresLidas.contains(widget.idArvore)) { // SALVAR O ID
+        arvoresLidas.add(widget.idArvore);
         await prefs.setStringList(chaveArvores, arvoresLidas);
 
         final pontuacaoAtual = prefs.getInt(chavePontuacao) ?? 0;
         await prefs.setInt(chavePontuacao, pontuacaoAtual + 1);
+
+        print('[DEBUG] Árvore ${widget.idArvore} salva como lida!');
       }
     }
   }
@@ -186,7 +190,7 @@ class _TelaQuizState extends State<TelaQuiz> {
                   ),
                 ),
                 ElevatedButton.icon(
-                  onPressed: () => Navigator.pushNamed(context, '/mapa'),
+                  onPressed: () => Navigator.pushNamed(context, '/principal'),
                   icon: const Icon(Icons.map),
                   label: const Text('Mapa'),
                   style: ElevatedButton.styleFrom(
