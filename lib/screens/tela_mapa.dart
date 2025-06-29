@@ -27,10 +27,12 @@ class _TelaMapaState extends State<TelaMapa> {
 
     setState(() {
       if (qtdArvoresLidas > 0 && qtdArvoresLidas < 28) {
-        imagePath = 'lib/assets/img/planta($qtdArvoresLidas).png';
+        int num_imagem = qtdArvoresLidas+1;
+
+        imagePath = 'lib/assets/img/planta($num_imagem).png';
       }
       else if (qtdArvoresLidas == 0) {
-        imagePath = 'lib/assets/img/planta_ini.png';
+        imagePath = 'lib/assets/img/planta(1).png';
       }
       isLoading = false;
     });
