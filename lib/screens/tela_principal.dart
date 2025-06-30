@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'tela_perfil.dart'; // ajuste conforme seu projeto
 
 class TelaPrincipal extends StatefulWidget {
   const TelaPrincipal({super.key});
@@ -30,6 +31,8 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       nomeUsuario = nome;
       if (caminhoImagem != null && File(caminhoImagem).existsSync()) {
         imagemPerfil = File(caminhoImagem);
+      } else {
+        imagemPerfil = null;
       }
     });
   }
@@ -61,7 +64,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Boas-vindas com imagem personalizada
+            // Linha com o avatar clicável e boas-vindas
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -70,11 +73,21 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                   style: const TextStyle(fontSize: 18),
                 ),
                 const SizedBox(width: 10),
-                CircleAvatar(
-                  radius: 20,
-                  backgroundImage: imagemPerfil != null
-                      ? FileImage(imagemPerfil!)
-                      : const AssetImage('lib/assets/img/icone_avatar.png') as ImageProvider,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => TelaPerfil()),
+                    ).then((_) {
+                      if (context.mounted) carregarDados();
+                    });
+                  },
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundImage: imagemPerfil != null
+                        ? FileImage(imagemPerfil!)
+                        : const AssetImage('lib/assets/img/icone_avatar.png') as ImageProvider,
+                  ),
                 ),
               ],
             ),
