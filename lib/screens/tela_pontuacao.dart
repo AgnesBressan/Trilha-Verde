@@ -12,7 +12,7 @@ class TelaPontuacao extends StatefulWidget {
 class _TelaPontuacaoState extends State<TelaPontuacao> {
   String nomeUsuario = 'Usuário';
   List<String> arvoresLidas = [];
-  final int totalArvores = 28;
+  final int totalArvores = 13;
 
   @override
   void initState() {
