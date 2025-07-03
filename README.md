@@ -25,6 +25,9 @@ Criar a função de administrador, com a possibilidade de alterar perguntas e ad
 
 ## Como rodar o projeto
 
-``` bash
-Para que o aplicativo seja executado em dispositivos mobile, é necessária a instalação de seu apk, que deve ser disponibilisado nos servidores da ESALQ.
+Para que o aplicativo seja executado em dispositivos móveis, é necessária a instalação de seu apk, que deve ser disponibilizado nos servidores da ESALQ ou extraído a partir desse projeto com o comando:
+
 ```
+flutter build apk --release
+```
+Isso assume que os ambientes de desenvolvimento Flutter SDK e Android SDK estão corretamente instalados e configurados.
