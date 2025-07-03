@@ -1,12 +1,17 @@
-# Trilha Verde - Projeto final para a disciplina SSC0620 - Engenharia de Software (2025)
+# Trilha Verde - Projeto final de SSC0620 - Engenharia de Software (2025)
 
 ## Integrantes:
 
 Agnes Bressan (Interface, Planejamento de Projeto e Gerenciamento de Atividades)
+
 Carolina Elias (Interface, Planejamento de Projeto e Gerenciamento de Atividades)
+
 Christian Bernard (Interface, Planejamento de Projeto e Gerenciamento de Atividades)
+
 Rhayna Casado (BD, Planejamento de Projeto e Gerenciamento de Atividades)
+
 Leticia Crepaldi (QR Code, Planejamento de Projeto e Gerenciamento de Atividades)
+
 Rauany Secci (QR Code, BD, Planejamento de Projeto e Gerenciamento de Atividades)
 
 
