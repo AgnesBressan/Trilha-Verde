@@ -22,6 +22,7 @@ Adição de novos conteúdos (mais perguntas, curiosidades, desafios) sobre as �
 Melhorias na gamificação, como novos tipos de desafios ou recompensas.<br>
 Aprimoramento da acessibilidade para usuários com necessidades especiais.<br>
 Criar a função de administrador, com a possibilidade de alterar perguntas e adicionar e remover árvores da trilha pelo aplicativo.<br>
+Expansão para dispositivos IOS.<br>
 
 ## Como rodar o projeto
 
