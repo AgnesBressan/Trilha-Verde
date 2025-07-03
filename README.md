@@ -1,10 +1,8 @@
-# trilha_verde
+# Trilha Verde
 
-A new Flutter project.
+## Visão Geral:
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
+O **Trilha Verde** é um aplicativo, disponível para plataformas Android e Web, desenvolvido em parceria com a ESALQ (Escola Superior de Agricultura Luiz de Queiroz). Seu objetivo é proporcionar uma experiência recreativa aos usuários, visitantes da ESALQ, que devem percorrer a "trilha das árvores úteis" e responder questões relacionadas às árvores do campus.
 
 A few resources to get you started if this is your first Flutter project:
 
