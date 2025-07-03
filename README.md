@@ -12,7 +12,7 @@ Rauany Secci (QR Code, BD, Planejamento de Projeto e Gerenciamento de Atividades
 
 ## Sobre o projeto:
 
-O projeto consiste em um aplicativo, disponível para plataformas móveis (Android) e web, voltado ao público infantil, sobre a Trilha de Árvores Úteis da ESALQ. O aplicativo permite que os usuários caminhem pela trilha e interajam com os QR Codes presentes nas árvores para responder perguntas sobre elas. Cada pergunta respondida aumenta a pontuação do usuário na trilha e gera uma conquista, que pode ser visualizada na aba de pontuação. Conforme o usuário caminha pela trilha e responde às perguntas, ele pode visualizar seu trajeto e as árvores que observou na tela principal.
+O projeto consiste em um aplicativo, disponível para plataformas móveis (Android) e voltado ao público infantil, sobre a Trilha de Árvores Úteis da ESALQ. O aplicativo permite que os usuários caminhem pela trilha e interajam com os QR Codes presentes nas árvores para responder perguntas sobre elas. Cada pergunta respondida aumenta a pontuação do usuário na trilha e gera uma conquista, que pode ser visualizada na aba de pontuação. Conforme o usuário caminha pela trilha e responde às perguntas, ele pode visualizar seu trajeto e as árvores que observou na tela principal.
 
 ## Algumas possibilidades para continuidade do projeto: 
 
