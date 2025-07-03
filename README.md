@@ -54,15 +54,3 @@ Para que o aplicativo seja executado em dispositivos móveis, é necessária a i
 flutter build apk --release
 ```
 Isso assume que os ambientes de desenvolvimento Flutter SDK e Android SDK estão corretamente instalados e configurados.
-
-Para compialar a versão web, que será hospedada em um servidor, use:
-
-```
-flutter build web
-```
-
-Isso gera uma  pasta com os arquivos necessários no repositório:
-
-```
-build/web/
-```
