@@ -17,11 +17,11 @@ O projeto consiste em um aplicativo voltado ao público infantil, sobre a Trilha
 ## Algumas possibilidades para continuidade do projeto: 
 
 Implementação de sistema de GPS em vez de um mapa interativo<br>
-Implementar funcionalidade de adicionar e remover árvores da trilha pelo aplicativo<br>
 Expansão para outras trilhas<br>
 Adição de novos conteúdos (mais perguntas, curiosidades, desafios) sobre as árvores<br>
 Melhorias na gamificação, como novos tipos de desafios ou recompensas<br>
 Aprimoramento da acessibilidade para usuários com necessidades especiais<br>
+Criar a função de administrador, com a possibilidade de alterar perguntas e adicionar e remover árvores da trilha pelo aplicativo<br>
 
 ## Como rodar o projeto
 
