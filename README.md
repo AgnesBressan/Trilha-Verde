@@ -54,7 +54,7 @@ flutter build apk --release
 ```
 Isso assume que os ambientes de desenvolvimento Flutter SDK e Android SDK estão corretamente instalados e configurados.
 
-Para compialr a versão web, que será hospedada em um servidor, use:
+Para compialar a versão web, que será hospedada em um servidor, use:
 
 ```
 flutter build web
