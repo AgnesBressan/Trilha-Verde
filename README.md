@@ -26,5 +26,5 @@ Criar a função de administrador, com a possibilidade de alterar perguntas e ad
 ## Como rodar o projeto
 
 ``` bash
-
+Para que o aplicativo seja executado em dispositivos mobile, é necessária a instalação de seu apk, que deve ser disponibilisado nos servidores da ESALQ.
 ```
