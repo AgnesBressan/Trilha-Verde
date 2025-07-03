@@ -60,7 +60,7 @@ Para compialr a versão web, que será hospedada em um servidor, use:
 flutter build web
 ```
 
-Isso gera uma  pasta com os arquivos necessários no repoitório:
+Isso gera uma  pasta com os arquivos necessários no repositório:
 
 ```
 build/web/
