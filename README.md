@@ -2,16 +2,11 @@
 
 ## Integrantes:
 
-Agnes Bressan (Interface, Planejamento de Projeto e Gerenciamento de Atividades)
-
-Carolina Elias (Interface, Planejamento de Projeto e Gerenciamento de Atividades)
-
-Christian Bernard (Interface, Planejamento de Projeto e Gerenciamento de Atividades)
-
-Rhayna Casado (BD, Planejamento de Projeto e Gerenciamento de Atividades)
-
-Leticia Crepaldi (QR Code, Planejamento de Projeto e Gerenciamento de Atividades)
-
+Agnes Bressan (Interface, Planejamento de Projeto e Gerenciamento de Atividades)<br>
+Carolina Elias (Interface, Planejamento de Projeto e Gerenciamento de Atividades)<br>
+Christian Bernard (Interface, Planejamento de Projeto e Gerenciamento de Atividades)<br>
+Rhayna Casado (BD, Planejamento de Projeto e Gerenciamento de Atividades)<br>
+Leticia Crepaldi (QR Code, Planejamento de Projeto e Gerenciamento de Atividades)<br>
 Rauany Secci (QR Code, BD, Planejamento de Projeto e Gerenciamento de Atividades)
 
 
