@@ -12,16 +12,16 @@ Rauany Secci (QR Code, BD, Planejamento de Projeto e Gerenciamento de Atividades
 
 ## Sobre o projeto:
 
-O projeto consiste em um aplicativo voltado ao público infantil, sobre a Trilha de Árvores Úteis da ESALQ. O aplicativo permite que os usuários caminhem pela trilha e interajam com os QR Codes presentes nas árvores para responder perguntas sobre elas. Cada pergunta respondida aumenta a pontuação do usuário na trilha e gera uma conquista, que pode ser visualizada na aba de pontuação. Conforme o usuário caminha pela trilha e responde às perguntas, ele pode visualizar seu trajeto e as árvores que observou na tela principal.
+O projeto consiste em um aplicativo, disponível para plataformas móveis (Android) e web, voltado ao público infantil, sobre a Trilha de Árvores Úteis da ESALQ. O aplicativo permite que os usuários caminhem pela trilha e interajam com os QR Codes presentes nas árvores para responder perguntas sobre elas. Cada pergunta respondida aumenta a pontuação do usuário na trilha e gera uma conquista, que pode ser visualizada na aba de pontuação. Conforme o usuário caminha pela trilha e responde às perguntas, ele pode visualizar seu trajeto e as árvores que observou na tela principal.
 
 ## Algumas possibilidades para continuidade do projeto: 
 
-Implementação de sistema de GPS em vez de um mapa interativo<br>
-Expansão para outras trilhas<br>
-Adição de novos conteúdos (mais perguntas, curiosidades, desafios) sobre as árvores<br>
-Melhorias na gamificação, como novos tipos de desafios ou recompensas<br>
-Aprimoramento da acessibilidade para usuários com necessidades especiais<br>
-Criar a função de administrador, com a possibilidade de alterar perguntas e adicionar e remover árvores da trilha pelo aplicativo<br>
+Implementação de sistema de GPS em vez de um mapa interativo.<br>
+Expansão para outras trilhas.<br>
+Adição de novos conteúdos (mais perguntas, curiosidades, desafios) sobre as árvores.<br>
+Melhorias na gamificação, como novos tipos de desafios ou recompensas.<br>
+Aprimoramento da acessibilidade para usuários com necessidades especiais.<br>
+Criar a função de administrador, com a possibilidade de alterar perguntas e adicionar e remover árvores da trilha pelo aplicativo.<br>
 
 ## Como rodar o projeto
 
@@ -54,3 +54,14 @@ flutter build apk --release
 ```
 Isso assume que os ambientes de desenvolvimento Flutter SDK e Android SDK estão corretamente instalados e configurados.
 
+Para compialr a versão web, que será hospedada em um servidor, use:
+
+```
+flutter build web
+```
+
+Isso gera uma  pasta com os arquivos necessários no repoitório:
+
+```
+build/web/
+```
