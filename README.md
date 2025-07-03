@@ -16,11 +16,15 @@ O projeto consiste em um aplicativo voltado ao público infantil, sobre a Trilha
 
 ## Algumas possibilidades para continuidade do projeto: 
 
-Implementação de sistema de GPS em vez de um mapa interativo
-Implementar funcionalidade de adicionar e remover árvores da trilha pelo aplicativo
-Expansão para outras trilhas
-Adição de novos conteúdos (mais perguntas, curiosidades, desafios) sobre as árvores
-Melhorias na gamificação, como novos tipos de desafios ou recompensas
-Aprimoramento da acessibilidade para usuários com necessidades especiais
+Implementação de sistema de GPS em vez de um mapa interativo<br>
+Implementar funcionalidade de adicionar e remover árvores da trilha pelo aplicativo<br>
+Expansão para outras trilhas<br>
+Adição de novos conteúdos (mais perguntas, curiosidades, desafios) sobre as árvores<br>
+Melhorias na gamificação, como novos tipos de desafios ou recompensas<br>
+Aprimoramento da acessibilidade para usuários com necessidades especiais<br>
 
 ## Como rodar o projeto
+
+``` bash
+
+```
