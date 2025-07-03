@@ -1,16 +1,26 @@
-# trilha_verde
+# Trilha Verde - Projeto final para a disciplina SSC0620 - Engenharia de Software (2025)
 
-A new Flutter project.
+## Integrantes:
 
-## Getting Started
+Agnes Bressan (Interface, Planejamento de Projeto e Gerenciamento de Atividades)
+Carolina Elias (Interface, Planejamento de Projeto e Gerenciamento de Atividades)
+Christian Bernard (Interface, Planejamento de Projeto e Gerenciamento de Atividades)
+Rhayna Casado (BD, Planejamento de Projeto e Gerenciamento de Atividades)
+Leticia Crepaldi (QR Code, Planejamento de Projeto e Gerenciamento de Atividades)
+Rauany Secci (QR Code, BD, Planejamento de Projeto e Gerenciamento de Atividades)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Sobre o projeto:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+O projeto consiste em um aplicativo voltado ao público infantil, sobre a Trilha de Árvores Úteis da ESALQ. O aplicativo permite que os usuários caminhem pela trilha e interajam com os QR Codes presentes nas árvores para responder perguntas sobre elas. Cada pergunta respondida aumenta a pontuação do usuário na trilha e gera uma conquista, que pode ser visualizada na aba de pontuação. Conforme o usuário caminha pela trilha e responde às perguntas, ele pode visualizar seu trajeto e as árvores que observou na tela principal.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Algumas possibilidades para continuidade do projeto: 
+
+Implementação de sistema de GPS em vez de um mapa interativo
+Implementar funcionalidade de adicionar e remover árvores da trilha pelo aplicativo
+Expansão para outras trilhas
+Adição de novos conteúdos (mais perguntas, curiosidades, desafios) sobre as árvores
+Melhorias na gamificação, como novos tipos de desafios ou recompensas
+Aprimoramento da acessibilidade para usuários com necessidades especiais
+
+## Como rodar o projeto
