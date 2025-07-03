@@ -27,7 +27,31 @@ Criar a função de administrador, com a possibilidade de alterar perguntas e ad
 
 Para que o aplicativo seja executado em dispositivos móveis, é necessária a instalação de seu apk, que deve ser disponibilizado nos servidores da ESALQ ou extraído a partir desse projeto com o comando:
 
-```
+``` bash
 flutter build apk --release
 ```
 Isso assume que os ambientes de desenvolvimento Flutter SDK e Android SDK estão corretamente instalados e configurados.
+
+Clone o repositorio:
+``` bash
+$ git clone https://github.com/AgnesBressan/Trilha-Verde.git
+```
+Com o [Flutter SDK](https://flutter.dev/docs/get-started/install) configurado, baixe as dependencias do projeto: 
+
+``` bash
+$ cd Trilha-Verde
+$ flutter pub get
+```
+
+Conecte seu dispositivo android e identifique seu ID atraves do comando `flutter devices` e rode o aplicativo com `flutter run`:
+``` bash 
+$ flutter devices 
+$ flutter run -d <id_dispositivo> 
+``` 
+
+Para rodar num emulador Android:
+```bash
+$ flutter emulators --launch Medium_Phone # exemplo 
+$ flutter run
+```
+
